@@ -1,0 +1,16 @@
+.process-list {
+  margin: 0;
+  padding-left: var(--space-4);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.process-list h3 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+}
+
+.process-list p {
+  margin: 0;
+}
