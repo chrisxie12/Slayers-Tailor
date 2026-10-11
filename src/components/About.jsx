@@ -12,7 +12,7 @@ export default function About() {
         <p className="section-copy"><strong>Phone:</strong> {SITE.phone}</p>
         <p className="section-copy"><strong>Hours:</strong> {SITE.hours}</p>
       </div>
-      <Placeholder caption="Atelier interior placeholder" />
+      <Placeholder />
     </section>
   );
 }

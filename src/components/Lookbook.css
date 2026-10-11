@@ -1,16 +1,21 @@
 .lookbook-grid {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
 }
 
-@media (min-width: 40rem) {
-  .lookbook-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.lookbook-grid .ph {
+  aspect-ratio: 3 / 4;
+  margin-bottom: 0;
 }
 
-@media (min-width: 64rem) {
+.lookbook-grid .ph.w {
+  grid-column: span 2;
+  aspect-ratio: 16 / 9;
+}
+
+@media (min-width: 48rem) {
   .lookbook-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

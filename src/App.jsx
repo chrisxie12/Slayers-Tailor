@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import './App.css';
 import { FABRICS, LININGS, BUTTONS, PATTERNS, WHATSAPP_NUMBER } from './config';
 import { buildWhatsAppLink } from './utils/whatsapp';
@@ -24,42 +24,6 @@ const links = [
   { href: '#book', label: 'Book' },
 ];
 
-const themeOptions = ['crimson', 'emerald', 'kente'];
-
-function DemoThemeSwitcher() {
-  const show = new URLSearchParams(window.location.search).has('demo');
-  const [theme, setTheme] = useState('crimson');
-
-  useEffect(() => {
-    if (!show) {
-      return undefined;
-    }
-    document.documentElement.dataset.brand = theme;
-    return () => {
-      delete document.documentElement.dataset.brand;
-    };
-  }, [show, theme]);
-
-  if (!show) {
-    return null;
-  }
-
-  return (
-    <div className="demo-switcher" role="group" aria-label="Demo color switcher">
-      {themeOptions.map((option) => (
-        <button
-          key={option}
-          type="button"
-          className={theme === option ? 'is-active' : ''}
-          onClick={() => setTheme(option)}
-        >
-          {option}
-        </button>
-      ))}
-    </div>
-  );
-}
-
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selected, setSelected] = useState({
@@ -84,7 +48,6 @@ export default function App() {
       <a className="skip-link" href="#main-content">Skip to content</a>
       <Nav links={links} menuOpen={menuOpen} onOpenMenu={() => setMenuOpen(true)} />
       <MobileMenu open={menuOpen} links={links} onClose={() => setMenuOpen(false)} />
-      <DemoThemeSwitcher />
       <main id="main-content">
         <Hero
           fabric={selected.fabric}

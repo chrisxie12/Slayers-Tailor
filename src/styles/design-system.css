@@ -103,19 +103,8 @@
   --color-surface: #1d1b19;
 }
 
-/* Demo colour switcher (?demo only) — data-brand, so it never collides
-   with the data-theme dark-mode attribute used above. */
-:root[data-brand='emerald'] {
-  --color-primary: #00a870;
-  --color-primary-deep: #0a3b2c;
-  --color-on-primary: #04150e;
-}
-
-:root[data-brand='kente'] {
-  --color-primary: #e5a100;
-  --color-primary-deep: #14110d;
-  --color-on-primary: #14110d;
-}
+/* Colour tokens are locked: crimson primary on ink/ivory, gold accent.
+   No theme overrides — the demo switcher was removed for production. */
 
 :focus-visible {
   outline: 2px solid var(--color-ink);

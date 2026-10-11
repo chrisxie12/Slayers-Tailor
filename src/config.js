@@ -1,11 +1,42 @@
-export const WHATSAPP_NUMBER = '000000000000';
+// Site configuration. Empty values are hidden automatically — nothing
+// placeholder-ish ever reaches the page.
+
+export const WHATSAPP_NUMBER = '';
 
 export const SITE = {
   name: 'Slayers Tailor',
-  address: 'Address placeholder',
-  phone: 'Phone placeholder',
-  hours: 'Hours placeholder',
+  address: '',
+  phone: '',
+  hours: '',
 };
+
+// Section visibility, keyed by section id. Set a key to false and the
+// section plus any nav/menu link that points at it is not rendered.
+export const SECTIONS = {
+  look: false,
+  browse: true,
+  cloths: true,
+};
+
+export function isSectionVisible(id) {
+  return SECTIONS[id] !== false;
+}
+
+// Empty-value hiding: drop any row whose value is blank, null or
+// undefined, so contact blocks collapse instead of showing stubs.
+export function hideEmpty(rows) {
+  return rows.filter((row) => String(row.value ?? '').trim() !== '');
+}
+
+export const CONTACT = hideEmpty([
+  { key: 'address', label: 'Studio', value: SITE.address },
+  { key: 'phone', label: 'Phone', value: SITE.phone },
+  { key: 'hours', label: 'Hours', value: SITE.hours },
+]);
+
+// Optional per-cloth description shown under the Fabric group. An empty
+// object hides the line entirely.
+export const FABRIC_NOTES = {};
 
 export const FABRICS = [
   { id: 'midnight-wool', name: 'Midnight Wool', shell: 'var(--fabric-midnight)', accent: 'var(--fabric-midnight-accent)' },

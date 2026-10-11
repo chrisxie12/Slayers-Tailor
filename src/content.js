@@ -61,7 +61,6 @@ export const SERVICES = {
         'Hand-finished details',
       ],
       cta: 'Ask about bespoke',
-      photo: 'Photo: bespoke fitting, tailor marking cloth, 4:5',
     },
     {
       id: 'made-to-measure',
@@ -72,7 +71,6 @@ export const SERVICES = {
         'The same choice of cloth and lining',
       ],
       cta: 'Ask about made to measure',
-      photo: 'Photo: made to measure, fabric wall, 4:5',
     },
   ],
   note: 'Timeframes and pricing are confirmed at your consultation.',
@@ -82,12 +80,12 @@ export const LOOKBOOK = {
   title: 'The look, in photographs.',
   copy: 'These frames mark the shots we will make together.',
   frames: [
-    { caption: 'Photo: finished suit, full length, studio, 16:9', wide: true },
-    { caption: 'Photo: lapel and hand stitching, close-up, 3:4', dark: true },
-    { caption: 'Photo: fitting in progress, 3:4' },
-    { caption: 'Photo: cloth wall and lining swatches, 3:4' },
-    { caption: 'Photo: client portrait, with permission, 3:4', dark: true },
-    { caption: 'Photo: workshop table, shears and chalk, 16:9', wide: true },
+    { id: 'full-length', wide: true },
+    { id: 'lapel-stitching', dark: true },
+    { id: 'fitting' },
+    { id: 'cloth-wall' },
+    { id: 'client-portrait', dark: true },
+    { id: 'workshop-table', wide: true },
   ],
 };
 
@@ -108,7 +106,6 @@ export const ABOUT = {
     'Whether you choose bespoke or made to measure, you work directly with the tailor from the first consultation to the final fitting.',
   ],
   cta: 'Book a consultation',
-  photo: 'Photo: the tailor at work, 4:5',
 };
 
 export const FAQ = {
@@ -147,15 +144,6 @@ export const STICKY_BAR = {
 export const FOOTER = {
   rights: '© 2026 Slayers Tailor. All rights reserved.',
   credit: 'Creative direction by Vision61 Studios.',
-};
-
-export const DEMO_SWITCHER = {
-  label: 'Demo colours',
-  themes: [
-    { id: 'crimson', label: 'Crimson' },
-    { id: 'emerald', label: 'Emerald' },
-    { id: 'kente', label: 'Kente gold' },
-  ],
 };
 
 export function whatsAppMessage({ fabric, pattern, lining, buttons }) {

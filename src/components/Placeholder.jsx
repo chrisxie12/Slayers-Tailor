@@ -1,19 +1,14 @@
 import './Placeholder.css';
 
-export default function Placeholder({ caption, src, width = 800, height = 600 }) {
+export default function Placeholder({ alt, src, width = 800, height = 600, variant = '' }) {
   if (src) {
     return (
-      <figure className="placeholder">
-        <img src={src} alt={caption} loading="lazy" width={width} height={height} />
-        <figcaption>{caption}</figcaption>
-      </figure>
+      <div className={`ph ${variant}`.trim()}>
+        <img src={src} alt={alt} loading="lazy" width={width} height={height} />
+      </div>
     );
   }
 
-  return (
-    <figure className="placeholder">
-      <div className="ph" aria-hidden="true" />
-      <figcaption>{caption}</figcaption>
-    </figure>
-  );
+  // No photo yet: decorative block, no visible caption.
+  return <div className={`ph ${variant}`.trim()} aria-hidden="true" />;
 }

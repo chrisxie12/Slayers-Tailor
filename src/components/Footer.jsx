@@ -1,4 +1,4 @@
-import { SITE } from '../config';
+import { CONTACT, SITE } from '../config';
 import './Footer.css';
 
 export default function Footer() {
@@ -6,8 +6,9 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="section-shell footer-shell">
         <p>{SITE.name}</p>
-        <p>{SITE.address}</p>
-        <p>{SITE.phone}</p>
+        {CONTACT.map((row) => (
+          <p key={row.key}>{row.label}: {row.value}</p>
+        ))}
       </div>
     </footer>
   );
