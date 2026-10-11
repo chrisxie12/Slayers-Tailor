@@ -1,0 +1,36 @@
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: var(--color-overlay);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mobile-panel {
+  width: min(20rem, 100%);
+  background: var(--color-surface);
+  padding: var(--space-5) var(--space-4);
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+
+.mobile-panel a,
+.menu-close {
+  min-height: 3rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--space-3);
+  text-decoration: none;
+  color: var(--color-ink);
+}
+
+@media (min-width: 64rem) {
+  .mobile-overlay {
+    display: none;
+  }
+}

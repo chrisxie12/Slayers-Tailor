@@ -1,0 +1,68 @@
+:root {
+  --font-body: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Cormorant Garamond', 'Times New Roman', serif;
+
+  --color-bg: #fbf8f4;
+  --color-surface: #ffffff;
+  --color-ink: #1f1a17;
+  --color-muted: #5d524a;
+  --color-border: #d8cec4;
+  --color-primary: #8f1628;
+  --color-primary-strong: #710f1f;
+  --color-primary-contrast: #ffffff;
+  --color-overlay: rgb(31 26 23 / 74%);
+
+  --fabric-midnight: #2d3a4a;
+  --fabric-midnight-accent: #5a6b7f;
+  --fabric-charcoal: #373434;
+  --fabric-charcoal-accent: #676060;
+  --fabric-navy: #26374f;
+  --fabric-navy-accent: #5b7091;
+
+  --lining-burgundy: #7e1c2c;
+  --lining-forest: #205038;
+  --lining-sapphire: #1d4f8f;
+
+  --button-horn: #4c3124;
+  --button-onyx: #1a1a1c;
+  --button-pearl: #d4d2c5;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-pill: 999rem;
+
+  --shadow-soft: 0 10px 30px rgb(0 0 0 / 10%);
+
+  --container-sm: 40rem;
+  --container-md: 48rem;
+  --container-lg: 64rem;
+  --container-xl: 78rem;
+
+  --bp-sm: 40rem;
+  --bp-md: 48rem;
+  --bp-lg: 64rem;
+  --bp-xl: 90rem;
+}
+
+:root[data-theme='emerald'] {
+  --color-primary: #17683f;
+  --color-primary-strong: #0f4d2d;
+}
+
+:root[data-theme='kente'] {
+  --color-primary: #975f00;
+  --color-primary-strong: #704700;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

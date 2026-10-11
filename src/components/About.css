@@ -1,0 +1,15 @@
+.about {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.about .section-copy + .section-copy {
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 48rem) {
+  .about {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}

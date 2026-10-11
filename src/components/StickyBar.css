@@ -1,0 +1,25 @@
+.sticky-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 30;
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.sticky-bar a {
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  text-decoration: none;
+}
+
+@media (min-width: 64rem) {
+  .sticky-bar {
+    display: none;
+  }
+}
