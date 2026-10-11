@@ -16,3 +16,24 @@
   color: var(--color-on-primary);
   text-decoration: none;
 }
+
+.book-contact {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgb(245 241 233 / 25%);
+}
+
+.book-contact b {
+  display: block;
+  font-size: var(--text-small);
+  opacity: 0.7;
+  margin-bottom: var(--space-1);
+}
+
+@media (min-width: 48rem) {
+  .book-contact {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

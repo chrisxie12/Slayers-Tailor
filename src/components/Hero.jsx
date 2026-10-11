@@ -1,16 +1,15 @@
+import { HERO } from '../content';
 import './Hero.css';
 
-export default function Hero({ fabric, lining, buttons, pattern, whatsappHref }) {
+export default function Hero({ fabric, lining, buttons, pattern }) {
   const jacketFill = pattern.id === 'plain' ? fabric.shell : `url(#pattern-${pattern.id})`;
 
   return (
     <section id="top" className="hero" aria-labelledby="hero-title">
       <div className="section-shell hero-shell">
-        <div>
-          <p className="eyebrow">Bespoke tailoring</p>
-          <h1 id="hero-title">Crafted for your stride.</h1>
-          <p className="section-copy">Choose your cloth, lining, and finishing details. We cut every jacket to your body and your intent.</p>
-          <a className="hero-cta" href={whatsappHref} target="_blank" rel="noreferrer">Book on WhatsApp</a>
+        <div className="hero-copy">
+          <h1 id="hero-title">{HERO.title}</h1>
+          <p className="section-copy">{HERO.copy}</p>
         </div>
         <svg className="jacket-svg" viewBox="0 0 380 380" aria-hidden="true">
           <defs>

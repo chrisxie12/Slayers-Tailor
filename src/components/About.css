@@ -7,6 +7,23 @@
   margin-top: var(--space-2);
 }
 
+.about-cta {
+  min-height: var(--btn-min-height);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--btn-padding-x);
+  border: 1px solid currentColor;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .about-cta:hover {
+    background: var(--color-ink);
+    color: var(--color-bg);
+  }
+}
+
 @media (min-width: 48rem) {
   .about {
     grid-template-columns: 1fr 1fr;

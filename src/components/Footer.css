@@ -7,7 +7,30 @@
   padding-block: var(--space-6);
 }
 
-.footer-shell p {
-  margin: 0;
+.footer-wordmark {
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 8vw, 4rem);
+  line-height: 1;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-ink);
+}
+
+.footer-wordmark span {
+  color: var(--color-accent);
+}
+
+.footer-lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-small);
   color: var(--color-muted);
+}
+
+@media (min-width: 48rem) {
+  .footer-lines {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

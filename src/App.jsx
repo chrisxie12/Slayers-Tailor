@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import './App.css';
-import { FABRICS, LININGS, BUTTONS, PATTERNS, WHATSAPP_NUMBER } from './config';
+import { FABRICS, LININGS, BUTTONS, PATTERNS, WHATSAPP_NUMBER, isSectionVisible } from './config';
+import { NAV_LINKS, MENU_LINKS, SKIP_LINK } from './content';
 import { buildWhatsAppLink } from './utils/whatsapp';
 import Nav from './components/Nav';
 import MobileMenu from './components/MobileMenu';
@@ -15,14 +16,7 @@ import BookCta from './components/BookCta';
 import Footer from './components/Footer';
 import StickyBar from './components/StickyBar';
 
-const links = [
-  { href: '#services', label: 'Services' },
-  { href: '#lookbook', label: 'Lookbook' },
-  { href: '#process', label: 'Process' },
-  { href: '#about', label: 'About' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#book', label: 'Book' },
-];
+const visible = (link) => !link.section || isSectionVisible(link.section);
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,6 +26,9 @@ export default function App() {
     buttons: BUTTONS[0],
     pattern: PATTERNS[0],
   });
+
+  const links = useMemo(() => NAV_LINKS.filter(visible), []);
+  const menuLinks = useMemo(() => MENU_LINKS.filter(visible), []);
 
   const whatsappHref = useMemo(
     () => buildWhatsAppLink(WHATSAPP_NUMBER, {
@@ -45,16 +42,15 @@ export default function App() {
 
   return (
     <>
-      <a className="skip-link" href="#main-content">Skip to content</a>
-      <Nav links={links} menuOpen={menuOpen} onOpenMenu={() => setMenuOpen(true)} />
-      <MobileMenu open={menuOpen} links={links} onClose={() => setMenuOpen(false)} />
+      <a className="skip-link" href="#main-content">{SKIP_LINK}</a>
+      <Nav links={links} menuOpen={menuOpen} onOpenMenu={() => setMenuOpen(true)} whatsappHref={whatsappHref} />
+      <MobileMenu open={menuOpen} links={menuLinks} onClose={() => setMenuOpen(false)} />
       <main id="main-content">
         <Hero
           fabric={selected.fabric}
           lining={selected.lining}
           buttons={selected.buttons}
           pattern={selected.pattern}
-          whatsappHref={whatsappHref}
         />
         <FabricPicker
           fabrics={FABRICS}
@@ -66,7 +62,7 @@ export default function App() {
           whatsappHref={whatsappHref}
         />
         <Services />
-        <Lookbook />
+        {isSectionVisible('look') && <Lookbook />}
         <Process />
         <About />
         <Faq />

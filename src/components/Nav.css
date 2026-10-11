@@ -23,6 +23,11 @@
   text-decoration: none;
 }
 
+.brand span {
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
 .desktop-nav {
   display: none;
 }
@@ -53,7 +58,23 @@
     gap: var(--space-2);
   }
 
+  .desktop-nav .nav-cta {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+}
+
+@media (hover: hover) {
+  .menu-btn:hover {
+    background: var(--color-bg);
+  }
+
   .desktop-nav a:hover {
     background: var(--color-bg);
+  }
+
+  .desktop-nav .nav-cta:hover {
+    background: var(--color-primary-deep);
+    color: var(--color-on-primary);
   }
 }

@@ -1,15 +1,21 @@
 // All site copy, verbatim from reference/slayers-tailor-demo.html.
 // Never invent text here; unknown details stay as placeholders in config.js.
 
+export const SKIP_LINK = 'Skip to content';
+
 export const BRAND = {
   main: 'SLAYERS',
   rest: 'TAILOR',
 };
 
+// `section` marks links that follow a SECTIONS flag; when the section is
+// hidden the link is hidden with it.
 export const NAV_LINKS = [
+  { href: '#browse', label: 'Garments', section: 'browse' },
+  { href: '#cloths', label: 'Cloths', section: 'cloths' },
   { href: '#services', label: 'Services' },
-  { href: '#look', label: 'Lookbook' },
   { href: '#making', label: 'Process' },
+  { href: '#look', label: 'Lookbook', section: 'look' },
   { href: '#about', label: 'About' },
   { href: '#faq', label: 'FAQ' },
 ];
@@ -19,16 +25,25 @@ export const NAV = {
   menuButton: 'Menu',
   menuClose: 'Close',
   menuLabel: 'Menu',
+  searchLabel: 'Search',
+  searchPlaceholder: 'Search garments or cloths',
+  searchSubmit: 'Search',
 };
 
 export const MENU_LINKS = [
   { href: '#top', label: 'Choose your cloth' },
   { href: '#services', label: 'Our services' },
-  { href: '#look', label: 'Lookbook' },
+  { href: '#look', label: 'Lookbook', section: 'look' },
   { href: '#making', label: 'How we work' },
   { href: '#about', label: 'About' },
   { href: '#book', label: 'Book a fitting' },
 ];
+
+export const SEARCH = {
+  noMatch: (query) =>
+    `No match for "${query}". Try a garment, a cloth colour or a section name.`,
+  suggestions: ['Services', 'Process', 'About', 'FAQ', 'Book'],
+};
 
 export const HERO = {
   title: 'Cut for you, from the cloth up.',
@@ -45,8 +60,18 @@ export const PICKER = {
   },
   primaryCta: 'Book this on WhatsApp',
   secondaryCta: 'See how we work',
+  tryOn: 'Try on the jacket',
   summary: (fabric, pattern, lining, buttons) =>
     `${fabric}${pattern ? ` ${pattern}` : ''} cloth, ${lining} lining, ${buttons} buttons.`,
+};
+
+export const BROWSE = {
+  title: 'What can we make for you?',
+};
+
+export const CLOTHS = {
+  title: 'Pick a cloth.',
+  copy: 'Tap one to see it on the jacket.',
 };
 
 export const SERVICES = {
@@ -55,6 +80,7 @@ export const SERVICES = {
     {
       id: 'bespoke',
       title: 'Bespoke',
+      lead: 'A suit drafted from scratch for you.',
       points: [
         'A pattern drafted from scratch for you',
         'Several fittings as the suit takes shape',
@@ -65,6 +91,8 @@ export const SERVICES = {
     {
       id: 'made-to-measure',
       title: 'Made to measure',
+      lead: 'A proven pattern, adjusted to your measurements.',
+      dark: true,
       points: [
         'An existing pattern adjusted to your measurements',
         'Fewer fittings and a shorter wait',
@@ -99,6 +127,16 @@ export const PROCESS = {
   ],
 };
 
+// Word band between Process and About. `gold` marks the accent words.
+export const BAND = {
+  words: [
+    { text: 'Consult.' },
+    { text: 'Measure.', gold: true },
+    { text: 'Fit.' },
+    { text: 'Deliver.', gold: true },
+  ],
+};
+
 export const ABOUT = {
   title: 'Clothing made around you.',
   paragraphs: [
@@ -130,11 +168,6 @@ export const BOOK = {
   title: 'Book a fitting.',
   copy: 'Send your fabric and lining choices on WhatsApp and we will confirm a time for your consultation.',
   cta: 'Message on WhatsApp',
-  details: [
-    { label: 'Studio', key: 'address' },
-    { label: 'Phone', key: 'phone' },
-    { label: 'Hours', key: 'hours' },
-  ],
 };
 
 export const STICKY_BAR = {
@@ -148,4 +181,8 @@ export const FOOTER = {
 
 export function whatsAppMessage({ fabric, pattern, lining, buttons }) {
   return `Hi Slayers Tailor, I'd like a fitting. Fabric: ${fabric}${pattern ? ` (${pattern})` : ''}, lining: ${lining}, buttons: ${buttons}.`;
+}
+
+export function whatsAppCategoryMessage(category) {
+  return `Hi Slayers Tailor, I'd like to ask about ${category.toLowerCase()}.`;
 }

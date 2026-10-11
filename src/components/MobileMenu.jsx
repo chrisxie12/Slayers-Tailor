@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { NAV } from '../content';
 import './MobileMenu.css';
 
 const FOCUSABLE = 'a[href], button:not([disabled])';
@@ -53,13 +54,13 @@ export default function MobileMenu({ open, links, onClose }) {
       <nav
         id="mobile-menu"
         className="mobile-panel"
-        aria-label="Mobile"
+        aria-label={NAV.menuLabel}
         aria-modal="true"
         role="dialog"
         ref={panelRef}
         onClick={(event) => event.stopPropagation()}
       >
-        <button type="button" className="menu-close" onClick={onClose}>Close</button>
+        <button type="button" className="menu-close" onClick={onClose}>{NAV.menuClose}</button>
         {links.map((link) => (
           <a key={link.href} href={link.href} onClick={onClose}>{link.label}</a>
         ))}

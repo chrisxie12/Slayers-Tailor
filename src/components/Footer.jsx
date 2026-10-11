@@ -1,14 +1,17 @@
-import { CONTACT, SITE } from '../config';
+import { BRAND, FOOTER } from '../content';
 import './Footer.css';
 
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="section-shell footer-shell">
-        <p>{SITE.name}</p>
-        {CONTACT.map((row) => (
-          <p key={row.key}>{row.label}: {row.value}</p>
-        ))}
+        <p className="footer-wordmark">
+          {BRAND.main} <span>{BRAND.rest}</span>
+        </p>
+        <div className="footer-lines">
+          <span>{FOOTER.rights}</span>
+          <span>{FOOTER.credit}</span>
+        </div>
       </div>
     </footer>
   );

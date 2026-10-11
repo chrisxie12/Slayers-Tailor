@@ -8,30 +8,21 @@
   align-items: center;
 }
 
-.eyebrow {
-  margin: 0 0 var(--space-2);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-muted);
+.hero-copy::before {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background: var(--color-primary);
+  margin-bottom: var(--space-5);
 }
 
 .hero h1 {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 1.05;
-}
-
-.hero-cta {
-  margin-top: var(--space-5);
-  min-height: 3rem;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 var(--space-4);
-  border-radius: var(--radius-pill);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  text-decoration: none;
+  font-size: var(--text-h1);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
 }
 
 .jacket-svg {

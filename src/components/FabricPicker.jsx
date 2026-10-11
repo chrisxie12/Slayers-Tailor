@@ -1,9 +1,10 @@
+import { PICKER } from '../content';
 import './FabricPicker.css';
 
 function SwatchGroup({ label, options, selected, onSelect, valueKey }) {
   return (
     <fieldset className="picker-group">
-      <legend>{label}</legend>
+      <legend>{label} <span>{selected.name}</span></legend>
       <div className="picker-options">
         {options.map((option) => (
           <button
@@ -23,15 +24,22 @@ function SwatchGroup({ label, options, selected, onSelect, valueKey }) {
 }
 
 export default function FabricPicker({ fabrics, linings, buttons, patterns, selected, setSelected, whatsappHref }) {
+  const patternName = selected.pattern.id === 'plain' ? '' : selected.pattern.name.toLowerCase();
+  const summary = PICKER.summary(
+    selected.fabric.name,
+    patternName,
+    selected.lining.name.toLowerCase(),
+    selected.buttons.name.toLowerCase(),
+  );
+
   return (
-    <section id="fabric-picker" className="section-shell picker" aria-labelledby="picker-title">
-      <h2 id="picker-title" className="section-title">Design your jacket</h2>
-      <SwatchGroup label="Fabric" options={fabrics} selected={selected.fabric} onSelect={(next) => setSelected((prev) => ({ ...prev, fabric: next }))} valueKey="shell" />
-      <SwatchGroup label="Lining" options={linings} selected={selected.lining} onSelect={(next) => setSelected((prev) => ({ ...prev, lining: next }))} valueKey="color" />
-      <SwatchGroup label="Buttons" options={buttons} selected={selected.buttons} onSelect={(next) => setSelected((prev) => ({ ...prev, buttons: next }))} valueKey="color" />
+    <div className="section-shell picker">
+      <SwatchGroup label={PICKER.groups.fabric} options={fabrics} selected={selected.fabric} onSelect={(next) => setSelected((prev) => ({ ...prev, fabric: next }))} valueKey="shell" />
+      <SwatchGroup label={PICKER.groups.lining} options={linings} selected={selected.lining} onSelect={(next) => setSelected((prev) => ({ ...prev, lining: next }))} valueKey="color" />
+      <SwatchGroup label={PICKER.groups.buttons} options={buttons} selected={selected.buttons} onSelect={(next) => setSelected((prev) => ({ ...prev, buttons: next }))} valueKey="color" />
 
       <fieldset className="picker-group">
-        <legend>Pattern</legend>
+        <legend>{PICKER.groups.pattern} <span>{selected.pattern.name}</span></legend>
         <div className="pattern-row">
           {patterns.map((pattern) => (
             <button
@@ -47,10 +55,11 @@ export default function FabricPicker({ fabrics, linings, buttons, patterns, sele
         </div>
       </fieldset>
 
-      <p className="summary" aria-live="polite">
-        Selected: {selected.fabric.name} shell, {selected.lining.name} lining, {selected.buttons.name} buttons, {selected.pattern.name} pattern.
-      </p>
-      <a className="picker-link" href={whatsappHref} target="_blank" rel="noreferrer">Send this selection on WhatsApp</a>
-    </section>
+      <p className="summary" aria-live="polite">{summary}</p>
+      <div className="picker-acts">
+        <a className="picker-link" href={whatsappHref} target="_blank" rel="noreferrer">{PICKER.primaryCta}</a>
+        <a className="picker-secondary" href="#making">{PICKER.secondaryCta}</a>
+      </div>
+    </div>
   );
 }
