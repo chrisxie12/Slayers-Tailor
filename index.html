@@ -1,32 +1,172 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <title>Slayers Tailor | Bespoke & Made-to-Measure Tailoring</title>
-    <meta
-      name="description"
-      content="Slayers Tailor crafts bespoke and made-to-measure garments with personalized fabric, lining, and finishing choices."
-    />
-    <meta name="theme-color" content="#d4142f" />
-    <meta property="og:title" content="Slayers Tailor" />
-    <meta
-      property="og:description"
-      content="Design your jacket and book a fitting with Slayers Tailor on WhatsApp."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://example.com" />
-    <meta property="og:image" content="/favicon.svg" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Slayers Tailor | Bespoke and made to measure suits</title>
+<meta name="description" content="Slayers Tailor makes bespoke and made to measure suits. Choose your cloth, lining and buttons, then book a fitting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F1E9;--fg:#121212;--mut:#625C53;--line:#D8D0C4;--surf:#EDE7DB;--brand:#D4142F;--deep:#4A0E18;--onb:#fff;--gold:#D9AE52;--gut:clamp(1.25rem,5vw,5rem);--ease:cubic-bezier(.22,1,.36,1);--disp:'Cormorant Garamond',Georgia,serif;--body:'Inter',Arial,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121212;--fg:#F5F1E9;--mut:#ABA498;--line:#2E2B27;--surf:#1D1B19}}
+:root[data-theme="dark"]{--bg:#121212;--fg:#F5F1E9;--mut:#ABA498;--line:#2E2B27;--surf:#1D1B19}
+:root[data-brand="emerald"]{--brand:#00A870;--deep:#0A3B2C;--onb:#04150E}
+:root[data-brand="kente"]{--brand:#E5A100;--deep:#14110D;--onb:#14110D}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(68px + env(safe-area-inset-top,0px))}
+body{margin:0;padding-bottom:76px;background:var(--bg);color:var(--fg);font:400 1rem/1.7 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--disp);font-weight:500;line-height:1.05;letter-spacing:-.03em;margin:0 0 1rem}
+h1{font-size:clamp(2.8rem,11vw,6rem)}h2{font-size:clamp(2.2rem,6vw,3.8rem)}h3{font-size:1.9rem}
+p{color:var(--mut);margin:0 0 1rem;max-width:52ch}
+:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.wrap{width:min(100% - 2*var(--gut),1360px);margin-inline:auto}
+section{padding-block:clamp(4rem,9vw,8rem)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:.85rem 1.6rem;border:1px solid transparent;font:600 .85rem/1 var(--body);letter-spacing:.02em;cursor:pointer;transition:background .3s var(--ease),color .3s var(--ease)}
+.p{background:var(--brand);color:var(--onb)}.o{border-color:currentColor;background:none;color:inherit}
+@media(hover:hover){.p:hover{background:var(--deep);color:#fff}.o:hover{background:var(--fg);color:var(--bg)}.od:hover{background:#F5F1E9;color:#121212}}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:700 .95rem var(--body);letter-spacing:.16em}.logo span{font-weight:400}
+.links{display:none;gap:2rem;font-size:.9rem}
+#mb{min-height:42px;padding:.5rem 1.1rem}
+#menu{position:fixed;inset:0;z-index:50;display:none;flex-direction:column;justify-content:center;gap:1rem;padding:var(--gut);background:var(--deep);color:#F5F1E9}
+#menu.on{display:flex}#menu a{font:500 2.6rem/1.2 var(--disp)}
+#x{position:absolute;top:calc(1rem + env(safe-area-inset-top,0px));right:var(--gut);background:none;border:0;color:inherit;font:600 .9rem var(--body);cursor:pointer;padding:.75rem}
+.hero{display:grid;gap:2rem;padding-block:2.5rem 4rem}
+.copy{grid-area:copy}.jk{grid-area:jk}.ctl{grid-area:ctl}
+.hero{grid-template-areas:"copy" "jk" "ctl"}
+.jk{background:var(--surf);aspect-ratio:1/1;display:grid;place-items:center;background-image:repeating-linear-gradient(90deg,transparent 0 15px,var(--line) 15px 16px)}
+.jk svg{width:min(78%,420px);height:auto}
+.jk svg [id^=sv]{transition:fill .5s var(--ease)}
+.grp{margin-bottom:1.25rem}.grp b{display:block;font:600 .85rem var(--body);margin-bottom:.5rem}.grp b span{font-weight:400;color:var(--mut)}
+.sws{display:flex;gap:.75rem;flex-wrap:wrap}
+.sw{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--c);cursor:pointer;padding:0}
+.sw[aria-pressed=true]{outline:2px solid var(--brand);outline-offset:3px}
+.acts{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
+.pat{height:12px;background:repeating-linear-gradient(135deg,var(--brand) 0 10px,var(--gold) 10px 20px,var(--fg) 20px 30px)}
+.two{display:grid;gap:3rem}
+.ph{aspect-ratio:4/5;display:flex;align-items:flex-end;padding:1rem;margin-bottom:1.25rem;background:var(--surf) repeating-linear-gradient(90deg,transparent 0 15px,var(--line) 15px 16px);font-size:.8rem;color:var(--mut)}
+.ph.d{background-color:var(--deep);color:rgb(245 241 233/.75)}
+.card ul{margin:0 0 1rem;padding-left:1.1rem;color:var(--mut)}
+.steps{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:2rem;counter-reset:s}
+.steps li{counter-increment:s;border-top:1px solid var(--fg);padding-top:1rem}
+.steps li::before{content:counter(s);font:500 2.4rem/1 var(--disp);color:var(--brand)}
+.steps h3{font-size:1.5rem;margin:.5rem 0}
+#book{background:var(--deep);color:#F5F1E9}#book p{color:rgb(245 241 233/.78)}
+footer{padding-block:2rem;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.5rem;font-size:.85rem;color:var(--mut)}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:.6rem var(--gut) calc(.6rem + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line)}
+.bar .btn{width:100%}
+.tsw{position:fixed;left:var(--gut);bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:40;display:none;align-items:center;gap:.5rem;padding:.4rem .7rem;background:var(--bg);border:1px solid var(--line);font-size:.75rem}
+.tsw button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--c);cursor:pointer;padding:0}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap}.chip{min-height:44px;padding:.5rem 1rem;border:1px solid var(--line);background:none;color:inherit;font:500 .85rem var(--body);cursor:pointer}.chip[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+#sum{margin:1rem 0 0;color:var(--fg);font-weight:500}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.copy,.jk{animation:in .9s var(--ease) both}.jk{animation-delay:.15s}
+.look{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:2rem}.look .ph{aspect-ratio:3/4;margin:0}.look .w{grid-column:span 2;aspect-ratio:16/9}
+details{border-top:1px solid var(--line);padding:1rem 0}details:last-of-type{border-bottom:1px solid var(--line)}summary{cursor:pointer;font:500 1.5rem/1.3 var(--disp);list-style:none}summary::-webkit-details-marker{display:none}summary::after{content:"+";float:right}details[open] summary::after{content:"\2212"}details p{margin:.75rem 0 0}
+.links{gap:1.5rem;align-items:center}.hb{min-height:42px;padding:.5rem 1.1rem}
+.ab{display:grid;gap:2rem}.ab .ph{margin:0}
+.ct{display:grid;gap:1.5rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgb(245 241 233/.25)}.ct b{display:block;font:600 .8rem var(--body);opacity:.7;margin-bottom:.25rem}
+@media(min-width:768px){
+.ab{grid-template-columns:1fr 1fr;align-items:center;gap:5rem}.ct{grid-template-columns:repeat(3,1fr)}
+footer.wrap{flex-direction:row;justify-content:space-between}.look{grid-template-columns:repeat(4,1fr)}
+body{padding-bottom:0}.bar{display:none}.tsw{bottom:1.25rem}
+
+.two{grid-template-columns:1fr 1fr}.steps{grid-template-columns:repeat(2,1fr)}
+.acts{flex-direction:row}}
+@media(min-width:1024px){
+.links{display:flex}#mb{display:none}.hero{grid-template-columns:1fr 1fr;grid-template-areas:"copy jk" "ctl jk";align-items:start;gap:1rem 5rem}.jk{aspect-ratio:auto;min-height:600px}
+.steps{grid-template-columns:repeat(4,1fr)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#top">SLAYERS <span>TAILOR</span></a>
+<nav class="links"><a href="#services">Services</a><a href="#look">Lookbook</a><a href="#making">Process</a><a href="#about">About</a><a href="#faq">FAQ</a><a class="btn p hb" data-wa>Book a fitting</a></nav>
+<button class="btn o" id="mb" aria-expanded="false">Menu</button>
+</div></header>
+<div id="menu" role="dialog" aria-label="Menu"><button id="x">Close</button><a href="#top">Choose your cloth</a><a href="#services">Our services</a><a href="#look">Lookbook</a><a href="#making">How we work</a><a href="#about">About</a><a href="#book">Book a fitting</a></div>
+
+<main id="top">
+<div class="wrap hero">
+<div class="copy"><h1>Cut for you, from the cloth up.</h1><p>Choose a fabric and lining, then bring the idea to a fitting. Slayers Tailor makes suits to your measure.</p></div>
+<div class="jk" role="img" aria-label="Suit jacket preview that changes with your choices">
+<svg viewBox="0 0 200 240"><defs><pattern id="p-pin" width="7" height="7" patternUnits="userSpaceOnUse"><rect class="pb" width="7" height="7"/><rect width="1" height="7" fill="#fff" opacity=".4"/></pattern><pattern id="p-chk" width="18" height="18" patternUnits="userSpaceOnUse"><rect class="pb" width="18" height="18"/><path d="M0 9H18M9 0V18" stroke="#fff" stroke-opacity=".28" stroke-width="2"/></pattern></defs><g stroke="rgb(0 0 0/.3)" stroke-width="1">
+<path id="sv1" d="M62 34 L26 62 L8 196 L32 202 L44 100 Z"/><path id="sv2" d="M138 34 L174 62 L192 196 L168 202 L156 100 Z"/>
+<path id="sv3" d="M62 34 L100 20 L138 34 L156 100 L170 222 L30 222 L44 100 Z"/>
+<path id="sv4" d="M84 27 L100 160 L116 27 L100 20 Z" stroke="none"/>
+<path id="sv5" d="M84 27 L62 58 L80 104 L100 160 Z"/><path id="sv6" d="M116 27 L138 58 L120 104 L100 160 Z"/>
+<path d="M100 160 V222" fill="none"/><path d="M52 190 H78 M122 190 H148 M118 118 L136 114 M62 58 L84 27 M138 58 L116 27" fill="none"/>
+<circle id="sv7" cx="100" cy="176" r="5"/><circle id="sv8" cx="100" cy="198" r="5"/></g></svg>
+</div>
+<div class="ctl">
+<div class="grp"><b>Fabric <span id="tf"></span></b><div class="sws" id="f"></div></div>
+<div class="grp"><b>Lining <span id="tl"></span></b><div class="sws" id="l"></div></div>
+<div class="grp"><b>Buttons <span id="tb"></span></b><div class="sws" id="b"></div></div>
+<div class="grp"><b>Pattern <span id="tp"></span></b><div class="chips" id="p"></div></div><p id="sum" aria-live="polite"></p><div class="acts"><a class="btn p" id="wa1" data-wa>Book this on WhatsApp</a><a class="btn o" href="#making">See how we work</a></div>
+</div>
+</div>
+<div class="pat" aria-hidden="true"></div>
+
+<section id="services"><div class="wrap">
+<h2>Two ways to be fitted.</h2>
+<div class="two">
+<div class="card"><div class="ph" role="img" aria-label="Photo placeholder">Photo: bespoke fitting, tailor marking cloth, 4:5</div><h3>Bespoke</h3><ul><li>A pattern drafted from scratch for you</li><li>Several fittings as the suit takes shape</li><li>Hand-finished details</li></ul><a class="btn o" href="#book">Ask about bespoke</a></div>
+<div class="card"><div class="ph d" role="img" aria-label="Photo placeholder">Photo: made to measure, fabric wall, 4:5</div><h3>Made to measure</h3><ul><li>An existing pattern adjusted to your measurements</li><li>Fewer fittings and a shorter wait</li><li>The same choice of cloth and lining</li></ul><a class="btn o" href="#book">Ask about made to measure</a></div>
+</div>
+<p style="margin-top:2rem">Timeframes and pricing are confirmed at your consultation.</p>
+</div></section>
+
+<section id="look"><div class="wrap"><h2>The look, in photographs.</h2><p>These frames mark the shots we will make together.</p><div class="look"><div class="ph w" role="img" aria-label="Photo placeholder">Photo: finished suit, full length, studio, 16:9</div><div class="ph d" role="img" aria-label="Photo placeholder">Photo: lapel and hand stitching, close-up, 3:4</div><div class="ph" role="img" aria-label="Photo placeholder">Photo: fitting in progress, 3:4</div><div class="ph" role="img" aria-label="Photo placeholder">Photo: cloth wall and lining swatches, 3:4</div><div class="ph d" role="img" aria-label="Photo placeholder">Photo: client portrait, with permission, 3:4</div><div class="ph w" role="img" aria-label="Photo placeholder">Photo: workshop table, shears and chalk, 16:9</div></div></div></section>
+<section id="making" style="background:var(--surf)"><div class="wrap">
+<h2>How a suit is made.</h2>
+<ol class="steps">
+<li><h3>Consultation</h3><p>Tell us the occasion and the look. We talk cloth, cut and colour.</p></li>
+<li><h3>Measurements</h3><p>We take your measurements and note posture and fit preferences.</p></li>
+<li><h3>Fittings</h3><p>We check the fit as it develops and adjust until it sits right.</p></li>
+<li><h3>Delivery</h3><p>Your finished suit, pressed and ready to wear.</p></li>
+</ol></div></section>
+
+<section id="about"><div class="wrap ab"><div class="ph" role="img" aria-label="Photo placeholder">Photo: the tailor at work, 4:5</div><div><h2>Clothing made around you.</h2><p>Every suit starts with a conversation about how you want to look and where you will wear it. From there we choose the cloth, take your measurements and fit the suit until it is right.</p><p>Whether you choose bespoke or made to measure, you work directly with the tailor from the first consultation to the final fitting.</p><a class="btn o" href="#book">Book a consultation</a></div></div></section>
+<section id="faq"><div class="wrap"><h2>Before you book.</h2><details><summary>Can I choose my own cloth and lining?</summary><p>Yes. The colours on this page are a preview. At your consultation you see real swatches and choose together.</p></details><details><summary>What should I bring to a first fitting?</summary><p>A shirt and shoes you plan to wear with the suit, and photos of any looks you like.</p></details><details><summary>How long does a suit take?</summary><p>It depends on whether you choose bespoke or made to measure. We confirm the timeframe and price at your consultation.</p></details></div></section>
+<section id="book"><div class="wrap">
+<h2>Book a fitting.</h2><p>Send your fabric and lining choices on WhatsApp and we will confirm a time for your consultation.</p>
+<a class="btn od o" id="wa2" data-wa>Message on WhatsApp</a>
+<div class="ct"><div><b>Studio</b>[Studio address]</div><div><b>Phone</b>[Phone number]</div><div><b>Hours</b>[Opening hours]</div></div>
+</div></section>
+</main>
+<footer class="wrap"><span>© 2026 Slayers Tailor. All rights reserved.</span><span>Creative direction by Vision61 Studios.</span></footer>
+
+<div class="bar"><a class="btn p" id="wa3" data-wa>Book a fitting</a></div>
+<div class="tsw"><span>Demo colours</span><button style="--c:#D4142F" data-b="crimson" aria-label="Crimson"></button><button style="--c:#00A870" data-b="emerald" aria-label="Emerald"></button><button style="--c:#E5A100" data-b="kente" aria-label="Kente gold"></button></div>
+
+<script>
+const WHATSAPP_NUMBER="";
+const D={f:[["Midnight navy","#1C2A44"],["Charcoal","#3A3A3D"],["Forest green","#1F3D2E"],["Burgundy","#5A1626"],["Sand","#C9B79C"]],
+l:[["Crimson","#D4142F"],["Gold","#E0A83C"],["Emerald","#00A870"],["Violet","#6B3FA0"],["Ivory","#F3EDE0"]],
+b:[["Horn","#2B2118"],["Brass","#B08D57"],["Pearl","#E8E4DA"]]};
+D.p=[["Plain",""],["Pinstripe","pin"],["Check","chk"]];
+const S={f:0,l:0,b:0,p:0},$=s=>document.querySelector(s);
+const fill=(ids,c)=>ids.forEach(i=>$("#sv"+i).setAttribute("fill",c));
+function paint(){
+ const c=D.f[S.f][1],pt=D.p[S.p][1];document.querySelectorAll(".pb").forEach(r=>r.setAttribute("fill",c));
+ fill([1,2,3,5,6],pt?"url(#p-"+pt+")":c);fill([4],D.l[S.l][1]);fill([7,8],D.b[S.b][1]);
+ $("#sum").textContent=D.f[S.f][0]+(pt?" "+D.p[S.p][0].toLowerCase():"")+" cloth, "+D.l[S.l][0].toLowerCase()+" lining, "+D.b[S.b][0].toLowerCase()+" buttons.";
+ ["f","l","b","p"].forEach(k=>{$("#t"+k).textContent=D[k][S[k]][0];[...$("#"+k).children].forEach((e,i)=>e.setAttribute("aria-pressed",i===S[k]))});
+ const t="Hi Slayers Tailor, I'd like a fitting. Fabric: "+D.f[S.f][0]+" ("+D.p[S.p][0].toLowerCase()+"), lining: "+D.l[S.l][0]+", buttons: "+D.b[S.b][0]+".";
+ document.querySelectorAll("[data-wa]").forEach(a=>{a.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(t);a.target="_blank";a.rel="noopener"});
+}
+["f","l","b"].forEach(k=>D[k].forEach((o,i)=>{const e=document.createElement("button");e.className="sw";e.style.setProperty("--c",o[1]);e.setAttribute("aria-label",o[0]);e.onclick=()=>{S[k]=i;paint()};$("#"+k).appendChild(e)}));
+D.p.forEach((o,i)=>{const e=document.createElement("button");e.className="chip";e.textContent=o[0];e.onclick=()=>{S.p=i;paint()};$("#p").appendChild(e)});
+paint();
+const m=$("#menu"),mb=$("#mb"),tog=v=>{m.classList.toggle("on",v);mb.setAttribute("aria-expanded",v)};
+mb.onclick=()=>tog(true);$("#x").onclick=()=>tog(false);m.querySelectorAll("a").forEach(a=>a.onclick=()=>tog(false));
+document.querySelectorAll("[data-b]").forEach(b=>b.onclick=()=>{document.documentElement.dataset.brand=b.dataset.b});
+if(location.search.includes("demo"))$(".tsw").style.display="flex";
+</script>
+</body>
 </html>
