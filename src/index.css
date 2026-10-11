@@ -34,7 +34,7 @@ img {
   z-index: 1000;
   padding: var(--space-3) var(--space-4);
   background: var(--color-primary);
-  color: var(--color-primary-contrast);
+  color: var(--color-on-primary);
 }
 
 .skip-link:focus {

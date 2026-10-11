@@ -34,9 +34,9 @@ function DemoThemeSwitcher() {
     if (!show) {
       return undefined;
     }
-    document.documentElement.dataset.theme = theme;
+    document.documentElement.dataset.brand = theme;
     return () => {
-      delete document.documentElement.dataset.theme;
+      delete document.documentElement.dataset.brand;
     };
   }, [show, theme]);
 

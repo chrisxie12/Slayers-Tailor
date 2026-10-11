@@ -74,6 +74,6 @@
   width: fit-content;
   padding: 0 var(--space-4);
   background: var(--color-primary);
-  color: var(--color-primary-contrast);
+  color: var(--color-on-primary);
   text-decoration: none;
 }

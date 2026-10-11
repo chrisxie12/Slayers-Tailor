@@ -1,32 +1,49 @@
 :root {
-  --font-body: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-heading: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-body: 'Inter', Arial, sans-serif;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
 
-  --color-bg: #fbf8f4;
-  --color-surface: #ffffff;
-  --color-ink: #1f1a17;
-  --color-muted: #5d524a;
-  --color-border: #d8cec4;
-  --color-primary: #8f1628;
-  --color-primary-strong: #710f1f;
-  --color-primary-contrast: #ffffff;
-  --color-overlay: rgb(31 26 23 / 74%);
+  /* Palette: reference/slayers-tailor-demo.html (:root light block) */
+  --color-bg: #f5f1e9;
+  --color-surface: #ede7db;
+  --color-ink: #121212;
+  --color-muted: #625c53;
+  --color-border: #d8d0c4;
+  --color-primary: #d4142f;
+  --color-primary-deep: #4a0e18;
+  --color-on-primary: #ffffff;
+  --color-accent: #d9ae52;
+  --color-overlay: rgb(18 18 18 / 74%);
 
-  --fabric-midnight: #2d3a4a;
-  --fabric-midnight-accent: #5a6b7f;
-  --fabric-charcoal: #373434;
-  --fabric-charcoal-accent: #676060;
+  --fabric-midnight: #1c2a44;
+  --fabric-midnight-accent: #44557a;
+  --fabric-charcoal: #3a3a3d;
+  --fabric-charcoal-accent: #6a6a6e;
   --fabric-navy: #26374f;
   --fabric-navy-accent: #5b7091;
 
-  --lining-burgundy: #7e1c2c;
-  --lining-forest: #205038;
+  --lining-burgundy: #5a1626;
+  --lining-forest: #1f3d2e;
   --lining-sapphire: #1d4f8f;
 
-  --button-horn: #4c3124;
+  --button-horn: #2b2118;
   --button-onyx: #1a1a1c;
-  --button-pearl: #d4d2c5;
+  --button-pearl: #e8e4da;
 
+  /* Type scale */
+  --text-h1: clamp(2.8rem, 11vw, 6rem);
+  --text-h2: clamp(2.2rem, 6vw, 3.8rem);
+  --text-h3: 1.9rem;
+  --text-h4: 1.5rem;
+  --text-display: 2.6rem;
+  --text-body: 1rem;
+  --text-small: 0.85rem;
+  --text-logo: 0.95rem;
+  --leading-heading: 1.05;
+  --leading-body: 1.7;
+  --tracking-heading: -0.03em;
+  --tracking-wide: 0.16em;
+
+  /* Spacing */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -41,6 +58,20 @@
 
   --shadow-soft: 0 10px 30px rgb(0 0 0 / 10%);
 
+  /* Buttons */
+  --btn-min-height: 50px;
+  --btn-padding-y: 0.85rem;
+  --btn-padding-x: 1.6rem;
+  --btn-font-size: 0.85rem;
+  --btn-font-weight: 600;
+  --btn-letter-spacing: 0.02em;
+  --btn-radius: 0;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-base: 0.3s;
+  --dur-slow: 0.5s;
+
   --container-sm: 40rem;
   --container-md: 48rem;
   --container-lg: 64rem;
@@ -52,17 +83,41 @@
   --bp-xl: 90rem;
 }
 
-:root[data-theme='emerald'] {
-  --color-primary: #17683f;
-  --color-primary-strong: #0f4d2d;
+/* Dark mode, block 1: system preference (reference: prefers-color-scheme) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg: #121212;
+    --color-ink: #f5f1e9;
+    --color-muted: #aba498;
+    --color-border: #2e2b27;
+    --color-surface: #1d1b19;
+  }
 }
 
-:root[data-theme='kente'] {
-  --color-primary: #975f00;
-  --color-primary-strong: #704700;
+/* Dark mode, block 2: explicit choice (reference: [data-theme="dark"]) */
+:root[data-theme='dark'] {
+  --color-bg: #121212;
+  --color-ink: #f5f1e9;
+  --color-muted: #aba498;
+  --color-border: #2e2b27;
+  --color-surface: #1d1b19;
+}
+
+/* Demo colour switcher (?demo only) — data-brand, so it never collides
+   with the data-theme dark-mode attribute used above. */
+:root[data-brand='emerald'] {
+  --color-primary: #00a870;
+  --color-primary-deep: #0a3b2c;
+  --color-on-primary: #04150e;
+}
+
+:root[data-brand='kente'] {
+  --color-primary: #e5a100;
+  --color-primary-deep: #14110d;
+  --color-on-primary: #14110d;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
 }

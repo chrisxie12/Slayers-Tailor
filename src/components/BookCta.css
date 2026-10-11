@@ -13,6 +13,6 @@
   padding: 0 var(--space-4);
   border-radius: var(--radius-pill);
   background: var(--color-primary);
-  color: var(--color-primary-contrast);
+  color: var(--color-on-primary);
   text-decoration: none;
 }
