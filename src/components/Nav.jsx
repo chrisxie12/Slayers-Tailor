@@ -22,6 +22,8 @@ const SUGGESTIONS = [
 export default function Nav({ links, menuOpen, onOpenMenu, whatsappHref, onSearchFabric }) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [message, setMessage] = useState('');
+  // Floating bar: retracts on the way down, returns on the way back up.
+  const [retracted, setRetracted] = useState(false);
   const inputRef = useRef(null);
   const tabsRef = useRef(null);
   const timersRef = useRef([]);
@@ -30,6 +32,36 @@ export default function Nav({ links, menuOpen, onOpenMenu, whatsappHref, onSearc
 
   // Clear any pending message/highlight timers when unmounted.
   useEffect(() => () => timersRef.current.forEach((id) => window.clearTimeout(id)), []);
+
+  // Hide-on-scroll-down is a nicety, never a trap: it switches off entirely
+  // under prefers-reduced-motion, and it stands down while the search row or
+  // the menu is open so neither can vanish mid-use. Keyboard users still
+  // reach the bar — an opacity-0 link is focusable, and :focus-within in
+  // Nav.css pulls it back out for them.
+  useEffect(() => {
+    if (
+      searchOpen ||
+      menuOpen ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      setRetracted(false);
+      return undefined;
+    }
+
+    let lastY = window.scrollY;
+
+    const onScroll = () => {
+      const y = Math.max(0, window.scrollY);
+      const dy = y - lastY;
+      lastY = y;
+      // 6px of hysteresis so rubber-banding and sub-pixel scrolling cannot flicker it.
+      if (y < 80 || dy < -6) setRetracted(false);
+      else if (dy > 6) setRetracted(true);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [searchOpen, menuOpen]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -76,7 +108,7 @@ export default function Nav({ links, menuOpen, onOpenMenu, whatsappHref, onSearc
   };
 
   return (
-    <header className="site-header">
+    <header className={`site-header${retracted ? ' is-hidden' : ''}`}>
       <div className="section-shell header-shell hd">
         <a className="logo" href="#top">
           {BRAND.main} <span>{BRAND.rest}</span>

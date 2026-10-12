@@ -83,6 +83,23 @@
 
   --shadow-soft: 0 10px 30px rgb(0 0 0 / 10%);
 
+  /* Floating header: a detached pill pinned to the top of the viewport.
+     --nav-h and --nav-h-open are the measured heights of the closed and
+     open (phone search row showing) bar; index.css uses them to pad the
+     page and to set scroll-padding so anchors land below the pill. */
+  --nav-bg: rgb(245 241 233 / 82%);
+  --nav-backdrop: blur(14px);
+  --nav-shadow: 0 10px 30px rgb(0 0 0 / 12%), 0 2px 8px rgb(0 0 0 / 6%);
+  --nav-radius: 3rem;
+  --nav-top: 0.75rem;
+  /* Inner padding keeps text clear of the rounded ends. The pill's outer
+     edge is this far outside `.section-shell`, so the controls inside land
+     on exactly the same left/right columns as the page — see Nav.css. */
+  --nav-pad: clamp(0.75rem, 2vw, 1.5rem);
+  --nav-h: 112px;
+  --nav-h-open: 170px;
+  --nav-gap: 1.25rem;
+
   /* Buttons */
   --btn-min-height: 50px;
   --btn-padding-y: 0.85rem;
@@ -122,6 +139,8 @@
     --color-muted: #aba498;
     --color-border: #2e2b27;
     --color-surface: #1d1b19;
+    --nav-bg: rgb(18 18 18 / 80%);
+    --nav-shadow: 0 12px 32px rgb(0 0 0 / 45%);
   }
 }
 
@@ -132,6 +151,8 @@
   --color-muted: #aba498;
   --color-border: #2e2b27;
   --color-surface: #1d1b19;
+  --nav-bg: rgb(18 18 18 / 80%);
+  --nav-shadow: 0 12px 32px rgb(0 0 0 / 45%);
 }
 
 /* Colour tokens are locked: crimson primary on ink/ivory, gold accent.

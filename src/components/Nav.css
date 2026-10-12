@@ -1,15 +1,59 @@
-/* Reference header: sticky, three grid areas on phones (logo / search
-   toggle / menu, then search, then the tab strip) collapsing to
-   logo / search / book plus tabs at 48rem. */
+/* Floating navbar: the reference's sticky header, detached from the top of
+   the document and pinned as a rounded, translucent pill. It hangs the same
+   distance outside `.section-shell` that it pads back in, so the controls
+   inside land on the page's own left/right columns while the pill edge reads
+   as floating. index.css pads `main` by the same --nav-top + --nav-h +
+   --nav-gap the pill occupies, so the page starts below it and anchor jumps
+   clear it too. */
 .site-header {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
+  position: fixed;
+  top: calc(var(--nav-top) + env(safe-area-inset-top, 0px));
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  /* The pill sits exactly --nav-pad outside `.section-shell` on both sides,
+     so its padding brings the controls back onto the page's own columns
+     (its floor of --space-3 stops the outer edge crowding the viewport on
+     the narrowest phones). */
+  width: min(
+    calc(100% - 2 * max(var(--gutter) - var(--nav-pad), var(--space-3))),
+    calc(var(--container-page) + 2 * var(--nav-pad))
+  );
+  padding-inline: var(--nav-pad);
   z-index: 40;
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  border-radius: var(--nav-radius);
+  /* Clips the hover fills of the corner controls to the pill's curve so
+     nothing can spill past the rounded ends. */
+  overflow: hidden;
+  background: var(--nav-bg);
+  -webkit-backdrop-filter: var(--nav-backdrop);
+  backdrop-filter: var(--nav-backdrop);
+  box-shadow: var(--nav-shadow);
+  transition:
+    transform var(--dur-base) var(--ease),
+    opacity var(--dur-base) var(--ease);
 }
 
+/* Retracted on scroll down (JS adds .is-hidden). `visibility` is not used —
+   an opacity-0 link still has to be tabbable so :focus-within below can
+   bring the bar back for keyboard users. */
+.site-header.is-hidden {
+  transform: translateY(calc(-100% - var(--nav-top) - env(safe-area-inset-top, 0px)));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.site-header.is-hidden:focus-within {
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* `.hd` is also a `.section-shell`; the pill already provides the page
+   column, so the inner grid fills it instead of insetting a second time. */
 .hd {
+  width: 100%;
+  margin-inline: 0;
   display: grid;
   grid-template-columns: 1fr auto auto;
   grid-template-areas:
@@ -134,9 +178,12 @@
   border-bottom-color: var(--color-primary);
 }
 
+/* The pill already insets its content, so this only needs bottom room —
+   the gutter padding it had when the header was full-bleed would push it
+   out of line with the grid above. */
 .search-msg {
   margin: 0 auto;
-  padding: 0 var(--gutter) 0.5rem;
+  padding: 0 0 0.75rem;
   font-size: var(--text-small);
   color: var(--color-muted);
 }
