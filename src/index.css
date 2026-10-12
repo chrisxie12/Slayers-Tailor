@@ -10,6 +10,22 @@ html {
   scroll-padding-top: calc(120px + env(safe-area-inset-top, 0px));
 }
 
+/* On phones the search field is its own header row, so the header grows
+   from 113px to 170px while it is open. Without this the row a search
+   jumps to lands underneath the header. Restored at 48rem, where the
+   field sits inside the logo row and the header does not grow. */
+html:has(.sf.on) {
+  scroll-padding-top: calc(177px + env(safe-area-inset-top, 0px));
+}
+
+@media (min-width: 48rem) {
+  /* From 48rem the search field sits in the logo row, so the header stays
+     113px whether the field is open or not. */
+  html:has(.sf.on) {
+    scroll-padding-top: calc(120px + env(safe-area-inset-top, 0px));
+  }
+}
+
 html,
 body,
 #root {
@@ -22,8 +38,10 @@ body {
   background: var(--color-bg);
   color: var(--color-ink);
   line-height: 1.6;
-  /* Clears the fixed bottom bar; released from 48rem up. */
-  padding-bottom: 76px;
+  /* Clears the fixed bottom bar; released from 48rem up. The bar's own
+     padding grows with the home-indicator inset, so the clearance has to
+     grow with it or content sits behind the bar. */
+  padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
 }
 
 a {

@@ -35,6 +35,9 @@
   font-weight: 600;
   cursor: pointer;
   padding: var(--space-3);
+  /* Text-only button, so the label alone would give a 41px target. */
+  min-height: 48px;
+  min-width: 48px;
 }
 
 @media (hover: hover) {
