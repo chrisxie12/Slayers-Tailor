@@ -4,7 +4,7 @@ import './Services.css';
 
 export default function Services() {
   return (
-    <section id="services" className="section-shell" aria-labelledby="services-title">
+    <section id="services" className="section-shell reveal" aria-labelledby="services-title">
       <h2 id="services-title" className="section-title">{SERVICES.title}</h2>
       <div className="services-grid">
         {SERVICES.items.map((item) => (

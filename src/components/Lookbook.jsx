@@ -8,7 +8,7 @@ function variantOf(frame) {
 
 export default function Lookbook() {
   return (
-    <section id="lookbook" className="section-shell" aria-labelledby="lookbook-title">
+    <section id="lookbook" className="section-shell reveal" aria-labelledby="lookbook-title">
       <h2 id="lookbook-title" className="section-title">{LOOKBOOK.title}</h2>
       <p className="section-copy">{LOOKBOOK.copy}</p>
       <div className="lookbook-grid">

@@ -48,11 +48,38 @@
   height: 2rem;
   border-radius: var(--radius-sm);
   background: var(--swatch-color);
+  transition: transform var(--dur-base) var(--ease);
+}
+
+.swatch,
+.pattern-btn {
+  transition:
+    border-color var(--dur-base) var(--ease),
+    box-shadow var(--dur-base) var(--ease),
+    background-color var(--dur-base) var(--ease),
+    color var(--dur-base) var(--ease),
+    transform var(--dur-fast) var(--ease);
 }
 
 .is-active {
   border-color: var(--color-primary);
   box-shadow: inset 0 0 0 1px var(--color-primary);
+}
+
+.swatch:active,
+.pattern-btn:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) {
+  .swatch:hover,
+  .pattern-btn:hover {
+    border-color: var(--color-ink);
+  }
+
+  .swatch:hover::before {
+    transform: scale(1.03);
+  }
 }
 
 .pattern-row {

@@ -4,7 +4,7 @@ import './About.css';
 
 export default function About() {
   return (
-    <section id="about" className="section-shell about" aria-labelledby="about-title">
+    <section id="about" className="section-shell about reveal" aria-labelledby="about-title">
       <div>
         <h2 id="about-title" className="section-title">{ABOUT.title}</h2>
         {ABOUT.paragraphs.map((paragraph) => (

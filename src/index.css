@@ -58,6 +58,74 @@ img {
   color: var(--color-muted);
 }
 
+/* Smooth, uniform state changes on every interactive element.
+   Zero specificity so component rules still win. */
+:where(a, button, summary) {
+  transition:
+    background-color var(--dur-base) var(--ease),
+    color var(--dur-base) var(--ease),
+    border-color var(--dur-base) var(--ease),
+    opacity var(--dur-base) var(--ease);
+}
+
+/* Shared keyframes. rise is the reference's @keyframes in. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.97);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Scroll reveal: hidden only when this class is present, so content is
+   never lost if the observer does not run. */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity var(--dur-slow) var(--ease),
+    transform var(--dur-slow) var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 @media (min-width: 64rem) {
   .section-shell {
     padding-inline: var(--space-6);
@@ -78,5 +146,11 @@ img {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Reveal must never hold content back when motion is reduced. */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

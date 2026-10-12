@@ -3,6 +3,7 @@ import './App.css';
 import { FABRICS, LININGS, BUTTONS, PATTERNS, WHATSAPP_NUMBER, isSectionVisible } from './config';
 import { NAV_LINKS, MENU_LINKS, SKIP_LINK } from './content';
 import { buildWhatsAppLink } from './utils/whatsapp';
+import useReveal from './utils/useReveal';
 import Nav from './components/Nav';
 import MobileMenu from './components/MobileMenu';
 import Hero from './components/Hero';
@@ -26,6 +27,8 @@ export default function App() {
     buttons: BUTTONS[0],
     pattern: PATTERNS[0],
   });
+
+  useReveal();
 
   const links = useMemo(() => NAV_LINKS.filter(visible), []);
   const menuLinks = useMemo(() => MENU_LINKS.filter(visible), []);

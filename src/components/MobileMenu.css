@@ -5,6 +5,7 @@
   background: var(--color-overlay);
   display: flex;
   justify-content: flex-end;
+  animation: fade-in var(--dur-base) var(--ease);
 }
 
 .mobile-panel {
@@ -14,6 +15,7 @@
   display: grid;
   gap: var(--space-3);
   align-content: start;
+  animation: slide-in var(--dur-base) var(--ease);
 }
 
 .mobile-panel a,

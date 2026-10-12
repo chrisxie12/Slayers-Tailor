@@ -69,8 +69,12 @@
 
   /* Motion */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.15s;
   --dur-base: 0.3s;
+  --dur-pop: 0.4s;
   --dur-slow: 0.5s;
+  --dur-enter: 0.9s;
+  --delay-enter: 0.15s;
 
   --container-sm: 40rem;
   --container-md: 48rem;

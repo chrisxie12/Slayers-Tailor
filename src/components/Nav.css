@@ -64,6 +64,24 @@
   }
 }
 
+/* Underline that draws itself in from the left (reference). */
+.desktop-nav a:not(.nav-cta) {
+  position: relative;
+}
+
+.desktop-nav a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: 0.5rem;
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease);
+}
+
 @media (hover: hover) {
   .menu-btn:hover {
     background: var(--color-bg);
@@ -73,8 +91,16 @@
     background: var(--color-bg);
   }
 
+  .desktop-nav a:not(.nav-cta):hover::after {
+    transform: scaleX(1);
+  }
+
   .desktop-nav .nav-cta:hover {
     background: var(--color-primary-deep);
     color: var(--color-on-primary);
   }
+}
+
+.desktop-nav a:not(.nav-cta):focus-visible::after {
+  transform: scaleX(1);
 }

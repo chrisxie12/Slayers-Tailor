@@ -25,9 +25,26 @@
   letter-spacing: var(--tracking-heading);
 }
 
+.hero-copy {
+  animation: rise var(--dur-enter) var(--ease) both;
+}
+
+.jacket-wrap {
+  animation: rise var(--dur-enter) var(--ease) var(--delay-enter) both;
+  justify-self: center;
+}
+
+/* Repaint the jacket smoothly whenever a choice changes. */
+.jacket-svg [data-part] {
+  transition: fill var(--dur-slow) var(--ease);
+}
+
+.jacket-svg.pop {
+  animation: pop var(--dur-pop) var(--ease);
+}
+
 .jacket-svg {
   width: min(100%, 24rem);
-  justify-self: center;
   filter: drop-shadow(var(--shadow-soft));
 }
 

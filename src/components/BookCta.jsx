@@ -4,7 +4,7 @@ import './BookCta.css';
 
 export default function BookCta({ whatsappHref }) {
   return (
-    <section id="book" className="section-shell book-cta" aria-labelledby="book-title">
+    <section id="book" className="section-shell book-cta reveal" aria-labelledby="book-title">
       <h2 id="book-title" className="section-title">{BOOK.title}</h2>
       <p className="section-copy">{BOOK.copy}</p>
       <a href={whatsappHref} target="_blank" rel="noreferrer">{BOOK.cta}</a>

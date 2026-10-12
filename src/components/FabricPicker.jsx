@@ -33,7 +33,7 @@ export default function FabricPicker({ fabrics, linings, buttons, patterns, sele
   );
 
   return (
-    <div className="section-shell picker">
+    <div className="section-shell picker reveal">
       <SwatchGroup label={PICKER.groups.fabric} options={fabrics} selected={selected.fabric} onSelect={(next) => setSelected((prev) => ({ ...prev, fabric: next }))} valueKey="shell" />
       <SwatchGroup label={PICKER.groups.lining} options={linings} selected={selected.lining} onSelect={(next) => setSelected((prev) => ({ ...prev, lining: next }))} valueKey="color" />
       <SwatchGroup label={PICKER.groups.buttons} options={buttons} selected={selected.buttons} onSelect={(next) => setSelected((prev) => ({ ...prev, buttons: next }))} valueKey="color" />
