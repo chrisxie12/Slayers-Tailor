@@ -14,6 +14,16 @@
   --color-accent: #d9ae52;
   --color-overlay: rgb(18 18 18 / 74%);
 
+  /* Absolute colours for the permanently dark surfaces (band, footer,
+     #book, the menu). These do not flip with the theme, exactly as the
+     reference hardcodes them. */
+  --color-ivory: #f5f1e9;
+  --color-surface-dark: #121212;
+  --color-on-deep: #f5f1e9;
+  --color-on-deep-soft: rgb(245 241 233 / 78%);
+  --color-on-deep-muted: rgb(245 241 233 / 70%);
+  --color-on-deep-faint: rgb(245 241 233 / 25%);
+
   /* Cloth, lining and button swatches. Values are the reference's own. */
   --fabric-midnight: #1c2a44;
   --fabric-charcoal: #3a3a3d;
@@ -35,6 +45,11 @@
   --jacket-outline: rgb(0 0 0 / 30%);
   --jacket-shadow: #000000;
   --jacket-highlight: #ffffff;
+
+  /* Woven texture laid over the cloth swatches in #cloths. */
+  --cloth-stripe: rgb(255 255 255 / 16%);
+  --cloth-weave: rgb(0 0 0 / 5%);
+  --cloth-edge: rgb(0 0 0 / 10%);
 
   /* Type scale */
   --text-h1: clamp(2.8rem, 11vw, 6rem);
@@ -86,6 +101,8 @@
   --dur-enter: 0.9s;
   --delay-enter: 0.15s;
 
+  /* Reference .wrap caps the page column at 1360px. */
+  --container-page: 85rem;
   --container-sm: 40rem;
   --container-md: 48rem;
   --container-lg: 64rem;

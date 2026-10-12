@@ -1,6 +1,7 @@
 .ph {
+  position: relative;
   aspect-ratio: 4 / 5;
-  margin-bottom: var(--space-3);
+  margin-bottom: 1.25rem;
   padding: var(--space-4);
   display: flex;
   align-items: flex-end;
@@ -12,14 +13,35 @@
   );
   color: var(--color-muted);
   font-size: var(--text-small);
+  --ph-mark: var(--color-ink);
+}
+
+/* Reference: a faint basted baseline along the bottom edge. */
+.ph::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 18px;
+  opacity: 0.3;
+  background:
+    linear-gradient(90deg, var(--ph-mark) 1px, transparent 1px) 0 100% / 10px 8px repeat-x,
+    linear-gradient(90deg, var(--ph-mark) 1px, transparent 1px) 0 100% / 50px 16px repeat-x;
 }
 
 .ph.d {
   background-color: var(--color-primary-deep);
-  color: rgb(245 241 233 / 75%);
+  color: var(--color-on-deep-muted);
+}
+
+.ph.d::after {
+  --ph-mark: var(--color-ivory);
 }
 
 .ph img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;

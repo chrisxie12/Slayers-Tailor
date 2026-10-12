@@ -1,35 +1,36 @@
+/* Reference #book: permanently dark surface, ivory text, and the
+   contact rows that appear only once real details are configured. */
 .book-cta {
-  text-align: center;
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-primary-deep);
+  color: var(--color-on-deep);
 }
 
-.book-cta a {
-  margin-top: var(--space-4);
-  min-height: 3rem;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 var(--space-4);
-  border-radius: var(--radius-pill);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  text-decoration: none;
+.book-cta .section-copy {
+  color: var(--color-on-deep-soft);
+}
+
+.book-cta .btn {
+  margin-top: var(--space-5);
 }
 
 .book-contact {
   display: grid;
-  gap: var(--space-4);
-  margin-top: var(--space-6);
+  gap: var(--space-5);
+  margin-top: 2.5rem;
   padding-top: var(--space-5);
-  border-top: 1px solid rgb(245 241 233 / 25%);
+  border-top: 1px solid var(--color-on-deep-faint);
 }
 
 .book-contact b {
   display: block;
-  font-size: var(--text-small);
+  font-size: 0.8rem;
+  font-weight: 600;
   opacity: 0.7;
   margin-bottom: var(--space-1);
+}
+
+.book-contact span {
+  color: var(--color-on-deep);
 }
 
 @media (min-width: 48rem) {

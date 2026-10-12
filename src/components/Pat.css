@@ -1,0 +1,9 @@
+.pat {
+  height: 12px;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--color-primary) 0 10px,
+    var(--color-accent) 10px 20px,
+    var(--color-ink) 20px 30px
+  );
+}

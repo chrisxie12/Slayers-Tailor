@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  /* Clears the sticky header (logo row + tab strip) on anchor jumps. */
+  scroll-padding-top: calc(120px + env(safe-area-inset-top, 0px));
+}
+
 html,
 body,
 #root {
@@ -16,6 +22,8 @@ body {
   background: var(--color-bg);
   color: var(--color-ink);
   line-height: 1.6;
+  /* Clears the fixed bottom bar; released from 48rem up. */
+  padding-bottom: 76px;
 }
 
 a {
@@ -41,10 +49,12 @@ img {
   top: var(--space-3);
 }
 
+/* Reference .wrap + section{padding-block}: the page column and the
+   vertical rhythm every section sits on. */
 .section-shell {
-  max-width: var(--container-xl);
-  margin: 0 auto;
-  padding: var(--space-7) var(--space-4);
+  width: min(100% - 2 * var(--gutter), var(--container-page));
+  margin-inline: auto;
+  padding-block: clamp(4rem, 9vw, 8rem);
 }
 
 .section-title {
@@ -89,6 +99,13 @@ img {
   color: inherit;
 }
 
+/* Outline on a permanently dark surface (#book). */
+.btn.od {
+  border-color: currentColor;
+  background: none;
+  color: inherit;
+}
+
 @media (hover: hover) {
   .btn.p:hover {
     background: var(--color-primary-deep);
@@ -97,6 +114,11 @@ img {
   .btn.o:hover {
     background: var(--color-ink);
     color: var(--color-bg);
+  }
+
+  .btn.od:hover {
+    background: var(--color-ivory);
+    color: var(--color-surface-dark);
   }
 }
 
@@ -167,18 +189,6 @@ img {
 .reveal.is-visible {
   opacity: 1;
   transform: none;
-}
-
-@media (min-width: 64rem) {
-  .section-shell {
-    padding-inline: var(--space-6);
-  }
-}
-
-@media (min-width: 90rem) {
-  .section-shell {
-    padding-inline: var(--space-7);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

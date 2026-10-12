@@ -1,16 +1,55 @@
+/* Reference #making: sits on the surface colour. */
+#making {
+  background: var(--color-surface);
+}
+
+/* Reference .steps: an ordered list, numbers drawn by counter, each
+   step ruled off along the top. */
 .process-list {
-  margin: 0;
-  padding-left: var(--space-4);
+  list-style: none;
+  margin: var(--space-6) 0 0;
+  padding: 0;
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-6);
+  counter-reset: step;
+}
+
+.process-list li {
+  counter-increment: step;
+  border-top: 1px solid var(--color-ink);
+  padding-top: var(--space-4);
+}
+
+.process-list li::before {
+  content: counter(step);
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-primary);
 }
 
 .process-list h3 {
-  margin: 0 0 var(--space-2);
+  margin: var(--space-2) 0;
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .process-list p {
   margin: 0;
+  color: var(--color-muted);
+}
+
+@media (min-width: 48rem) {
+  .process-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .process-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }

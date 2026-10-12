@@ -1,106 +1,183 @@
+/* Reference header: sticky, three grid areas on phones (logo / search
+   toggle / menu, then search, then the tab strip) collapsing to
+   logo / search / book plus tabs at 48rem. */
 .site-header {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top, 0px);
   z-index: 40;
-  background: var(--color-surface);
+  background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
 }
 
-.header-shell {
-  max-width: var(--container-xl);
-  margin: 0 auto;
-  min-height: 4rem;
-  padding: var(--space-2) var(--space-4);
-  display: flex;
+.hd {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-areas:
+    'logo sb mb'
+    'sf sf sf'
+    'tabs tabs tabs';
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
+  column-gap: var(--space-2);
+  padding-block: 0;
 }
 
-.brand {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
+.logo {
+  grid-area: logo;
+  font-family: var(--font-body);
+  font-size: var(--text-logo);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  line-height: 64px;
   text-decoration: none;
 }
 
-.brand span {
+.logo span {
   font-weight: 400;
-  color: var(--color-muted);
 }
 
-.desktop-nav {
-  display: none;
+/* 44px in the reference; 48px here to meet the tap target rule. */
+.ib {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: none;
+  color: inherit;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
 }
 
-.menu-btn,
-.desktop-nav a {
-  min-height: 3rem;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 var(--space-3);
-  border-radius: var(--radius-pill);
-  text-decoration: none;
+.search-toggle {
+  grid-area: sb;
 }
 
 .menu-btn {
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-ink);
+  grid-area: mb;
+  min-height: 48px;
+  padding: var(--space-2) 1.1rem;
 }
 
-@media (min-width: 64rem) {
+.sf {
+  grid-area: sf;
+  display: none;
+  position: relative;
+  margin-bottom: 0.6rem;
+}
+
+.sf.on {
+  display: block;
+}
+
+.sf input {
+  margin: 0;
+  min-height: 48px;
+  padding: 0 3rem 0 1.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font: inherit;
+  width: 100%;
+}
+
+/* 40px in the reference; 48px here to meet the tap target rule. */
+.sf button {
+  position: absolute;
+  right: 0.125rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: none;
+  color: var(--color-ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.hb {
+  grid-area: book;
+  display: none;
+  min-height: 48px;
+  padding: var(--space-2) 1.1rem;
+}
+
+.tabs {
+  grid-area: tabs;
+  display: flex;
+  gap: 1.6rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: relative;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs a {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0.75rem 0 0.65rem;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.tabs a[aria-current='true'] {
+  border-bottom-color: var(--color-primary);
+}
+
+.search-msg {
+  margin: 0 auto;
+  padding: 0 var(--gutter) 0.5rem;
+  font-size: var(--text-small);
+  color: var(--color-muted);
+}
+
+.search-msg:empty {
+  display: none;
+}
+
+@media (hover: hover) {
+  .tabs a:hover {
+    border-bottom-color: var(--color-ink);
+  }
+
+  .menu-btn:hover {
+    background: var(--color-surface);
+  }
+}
+
+@media (min-width: 48rem) {
+  .hd {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      'logo sf book'
+      'tabs tabs tabs';
+    column-gap: var(--space-6);
+  }
+
+  .sf {
+    display: block;
+    max-width: 480px;
+    width: 100%;
+    justify-self: center;
+    margin: 0;
+  }
+
+  .search-toggle,
   .menu-btn {
     display: none;
   }
 
-  .desktop-nav {
-    display: flex;
-    gap: var(--space-2);
+  .hb {
+    display: inline-flex;
   }
-
-  .desktop-nav .nav-cta {
-    background: var(--color-primary);
-    color: var(--color-on-primary);
-  }
-}
-
-/* Underline that draws itself in from the left (reference). */
-.desktop-nav a:not(.nav-cta) {
-  position: relative;
-}
-
-.desktop-nav a:not(.nav-cta)::after {
-  content: "";
-  position: absolute;
-  left: var(--space-3);
-  right: var(--space-3);
-  bottom: 0.5rem;
-  height: 2px;
-  background: var(--color-primary);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur-base) var(--ease);
-}
-
-@media (hover: hover) {
-  .menu-btn:hover {
-    background: var(--color-bg);
-  }
-
-  .desktop-nav a:hover {
-    background: var(--color-bg);
-  }
-
-  .desktop-nav a:not(.nav-cta):hover::after {
-    transform: scaleX(1);
-  }
-
-  .desktop-nav .nav-cta:hover {
-    background: var(--color-primary-deep);
-    color: var(--color-on-primary);
-  }
-}
-
-.desktop-nav a:not(.nav-cta):focus-visible::after {
-  transform: scaleX(1);
 }

@@ -49,22 +49,13 @@ export default function MobileMenu({ open, links, onClose }) {
     return null;
   }
 
+  // Reference #menu: a full-bleed deep panel with large serif links.
   return (
-    <div className="mobile-overlay" role="presentation" onClick={onClose}>
-      <nav
-        id="mobile-menu"
-        className="mobile-panel"
-        aria-label={NAV.menuLabel}
-        aria-modal="true"
-        role="dialog"
-        ref={panelRef}
-        onClick={(event) => event.stopPropagation()}
-      >
-        <button type="button" className="menu-close" onClick={onClose}>{NAV.menuClose}</button>
-        {links.map((link) => (
-          <a key={link.href} href={link.href} onClick={onClose}>{link.label}</a>
-        ))}
-      </nav>
+    <div id="menu" role="dialog" aria-modal="true" aria-label={NAV.menuLabel} ref={panelRef}>
+      <button type="button" id="x" onClick={onClose}>{NAV.menuClose}</button>
+      {links.map((link) => (
+        <a key={link.href} href={link.href} onClick={onClose}>{link.label}</a>
+      ))}
     </div>
   );
 }

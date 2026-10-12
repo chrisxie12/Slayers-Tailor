@@ -1,0 +1,26 @@
+/* Reference .band: full-bleed deep-crimson strip carrying the four
+   working words, with the accent words in gold. */
+.band {
+  background: var(--color-primary-deep);
+  padding-block: clamp(3rem, 8vw, 6rem);
+  overflow: hidden;
+}
+
+.band-shell {
+  padding-block: 0;
+}
+
+.band p {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 9vw, 6.5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-on-deep);
+}
+
+.band p span {
+  color: var(--color-accent);
+}

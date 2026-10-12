@@ -1,19 +1,22 @@
+/* Reference .ft: permanently dark footer, gold on the wordmark. */
 .site-footer {
-  border-top: 1px solid var(--color-border);
-  background: var(--color-surface);
+  display: block;
+  background: var(--color-surface-dark);
+  color: var(--color-on-deep);
 }
 
 .footer-shell {
-  padding-block: var(--space-6);
+  padding-block: 3rem 2rem;
 }
 
 .footer-wordmark {
-  margin: 0 0 var(--space-5);
+  margin: 0 0 2rem;
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 8vw, 4rem);
+  font-size: clamp(2.4rem, 10vw, 6rem);
+  font-weight: 500;
   line-height: 1;
   letter-spacing: var(--tracking-heading);
-  color: var(--color-ink);
+  color: var(--color-on-deep);
 }
 
 .footer-wordmark span {
@@ -23,9 +26,9 @@
 .footer-lines {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 0.4rem;
   font-size: var(--text-small);
-  color: var(--color-muted);
+  color: var(--color-on-deep-muted);
 }
 
 @media (min-width: 48rem) {

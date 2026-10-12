@@ -17,7 +17,7 @@ export default function Services() {
                 <li key={point}>{point}</li>
               ))}
             </ul>
-            <a className="card-cta" href="#book">{item.cta}</a>
+            <a className="btn o card-cta" href="#book">{item.cta}</a>
           </article>
         ))}
       </div>

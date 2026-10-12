@@ -1,38 +1,44 @@
-.mobile-overlay {
+/* Reference #menu: a full-bleed deep panel with large serif links,
+   shown instead of the page. The reference toggles a class; React
+   mounts it only while open. */
+#menu {
   position: fixed;
   inset: 0;
   z-index: 60;
-  background: var(--color-overlay);
   display: flex;
-  justify-content: flex-end;
-  animation: fade-in var(--dur-base) var(--ease);
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--gutter);
+  background: var(--color-primary-deep);
+  color: var(--color-on-deep);
 }
 
-.mobile-panel {
-  width: min(20rem, 100%);
-  background: var(--color-surface);
-  padding: var(--space-5) var(--space-4);
-  display: grid;
-  gap: var(--space-3);
-  align-content: start;
-  animation: slide-in var(--dur-base) var(--ease);
-}
-
-.mobile-panel a,
-.menu-close {
-  min-height: 3rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  display: inline-flex;
-  align-items: center;
-  padding: 0 var(--space-3);
+#menu a {
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: inherit;
   text-decoration: none;
-  color: var(--color-ink);
 }
 
-@media (min-width: 64rem) {
-  .mobile-overlay {
-    display: none;
+#x {
+  position: absolute;
+  top: calc(1rem + env(safe-area-inset-top, 0px));
+  right: var(--gutter);
+  background: none;
+  border: 0;
+  color: inherit;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: var(--space-3);
+}
+
+@media (hover: hover) {
+  #menu a:hover {
+    color: var(--color-accent);
   }
 }

@@ -1,6 +1,6 @@
 .services-grid {
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-7);
 }
 
 .services-grid .card {
@@ -18,21 +18,13 @@
 
 .services-grid ul {
   margin: 0 0 var(--space-4);
-  padding-left: var(--space-5);
+  padding-left: 1.1rem;
   color: var(--color-muted);
 }
 
 .services-grid .card-cta {
-  min-height: var(--btn-min-height);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: fit-content;
   margin-top: auto;
-  padding: 0 var(--btn-padding-x);
-  border: 1px solid currentColor;
-  color: var(--color-ink);
-  text-decoration: none;
 }
 
 .services-note {
@@ -42,12 +34,5 @@
 @media (min-width: 48rem) {
   .services-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (hover: hover) {
-  .services-grid .card-cta:hover {
-    background: var(--color-ink);
-    color: var(--color-bg);
   }
 }

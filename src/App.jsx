@@ -8,9 +8,13 @@ import Nav from './components/Nav';
 import MobileMenu from './components/MobileMenu';
 import Hero from './components/Hero';
 import FabricPicker from './components/FabricPicker';
+import Pat from './components/Pat';
+import Browse from './components/Browse';
+import Cloths from './components/Cloths';
 import Services from './components/Services';
 import Lookbook from './components/Lookbook';
 import Process from './components/Process';
+import Band from './components/Band';
 import About from './components/About';
 import Faq from './components/Faq';
 import BookCta from './components/BookCta';
@@ -43,10 +47,19 @@ export default function App() {
     [selected],
   );
 
+  // Search resolves a cloth by name and selects it on the jacket.
+  const selectFabric = (fabric) => setSelected((prev) => ({ ...prev, fabric }));
+
   return (
     <>
       <a className="skip-link" href="#main-content">{SKIP_LINK}</a>
-      <Nav links={links} menuOpen={menuOpen} onOpenMenu={() => setMenuOpen(true)} whatsappHref={whatsappHref} />
+      <Nav
+        links={links}
+        menuOpen={menuOpen}
+        onOpenMenu={() => setMenuOpen(true)}
+        whatsappHref={whatsappHref}
+        onSearchFabric={selectFabric}
+      />
       <MobileMenu open={menuOpen} links={menuLinks} onClose={() => setMenuOpen(false)} />
       <main id="main-content">
         <Hero
@@ -65,9 +78,15 @@ export default function App() {
             whatsappHref={whatsappHref}
           />
         </Hero>
+        <Pat />
+        {isSectionVisible('browse') && <Browse />}
+        {isSectionVisible('cloths') && (
+          <Cloths selectedFabric={selected.fabric} onSelectFabric={selectFabric} />
+        )}
         <Services />
         {isSectionVisible('look') && <Lookbook />}
         <Process />
+        <Band />
         <About />
         <Faq />
         <BookCta whatsappHref={whatsappHref} />

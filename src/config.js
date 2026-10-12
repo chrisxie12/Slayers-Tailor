@@ -3,6 +3,18 @@
 
 export const WHATSAPP_NUMBER = '';
 
+// Garment categories shown in #browse. `icon` picks the line drawing
+// from Browse.jsx; the reference's set is jacket, trousers, shirt,
+// vest and scissors.
+export const CATEGORIES = [
+  { id: 'suits', name: 'Suits', icon: 'jacket' },
+  { id: 'jackets-and-blazers', name: 'Jackets and blazers', icon: 'jacket' },
+  { id: 'trousers', name: 'Trousers', icon: 'trousers' },
+  { id: 'shirts', name: 'Shirts', icon: 'shirt' },
+  { id: 'waistcoats', name: 'Waistcoats', icon: 'vest' },
+  { id: 'alterations', name: 'Alterations', icon: 'scissors' },
+];
+
 export const SITE = {
   name: 'Slayers Tailor',
   address: '',

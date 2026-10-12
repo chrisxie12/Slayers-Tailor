@@ -25,6 +25,7 @@ export const NAV = {
   menuButton: 'Menu',
   menuClose: 'Close',
   menuLabel: 'Menu',
+  sectionsLabel: 'Sections',
   searchLabel: 'Search',
   searchPlaceholder: 'Search garments or cloths',
   searchSubmit: 'Search',

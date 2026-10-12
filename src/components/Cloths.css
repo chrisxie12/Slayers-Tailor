@@ -1,0 +1,41 @@
+/* Reference #cloths: one woven block per cloth. Tapping sets the
+   fabric on the jacket and scrolls back to it. */
+.cloths-section {
+  background: var(--color-surface);
+}
+
+.cloths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.cl .blk {
+  aspect-ratio: 3 / 4;
+  margin-bottom: 0.7rem;
+  background-color: var(--c);
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 6px, var(--cloth-stripe) 6px 7px),
+    repeating-linear-gradient(45deg, transparent 0 2px, var(--cloth-weave) 2px 3px);
+  box-shadow: inset 0 0 0 1px var(--cloth-edge);
+}
+
+.cl b {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+
+/* 44px in the reference; 48px here to meet the tap target rule. */
+.cl .btn {
+  min-height: 48px;
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.8rem;
+}
+
+@media (min-width: 64rem) {
+  .cloths {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}

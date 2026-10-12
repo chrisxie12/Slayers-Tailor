@@ -7,7 +7,7 @@ export default function BookCta({ whatsappHref }) {
     <section id="book" className="section-shell book-cta reveal" aria-labelledby="book-title">
       <h2 id="book-title" className="section-title">{BOOK.title}</h2>
       <p className="section-copy">{BOOK.copy}</p>
-      <a href={whatsappHref} target="_blank" rel="noreferrer">{BOOK.cta}</a>
+      <a className="btn od o" href={whatsappHref} target="_blank" rel="noopener noreferrer">{BOOK.cta}</a>
 
       {CONTACT.length > 0 && (
         <div className="book-contact">

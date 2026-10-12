@@ -9,6 +9,9 @@
     'jk'
     'ctl';
   gap: var(--space-6);
+  /* The section above carries the reference's 2.5rem/4rem; without
+     this the shared .section-shell clamp would stack on top of it. */
+  padding-block: 0;
 }
 
 .hero-copy {

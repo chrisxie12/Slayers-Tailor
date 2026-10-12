@@ -1,25 +1,26 @@
-.sticky-bar {
-  position: sticky;
+/* Reference .bar: a fixed bottom bar on phones only. Body carries
+   matching padding so it never covers content. */
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
   bottom: 0;
   z-index: 30;
-  padding: var(--space-3);
-  background: var(--color-surface);
+  padding: 0.6rem var(--gutter) calc(0.6rem + env(safe-area-inset-bottom, 0px));
+  background: var(--color-bg);
   border-top: 1px solid var(--color-border);
 }
 
-.sticky-bar a {
-  min-height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-pill);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  text-decoration: none;
+.bar .btn {
+  width: 100%;
 }
 
-@media (min-width: 64rem) {
-  .sticky-bar {
+@media (min-width: 48rem) {
+  .bar {
     display: none;
+  }
+
+  body {
+    padding-bottom: 0;
   }
 }
