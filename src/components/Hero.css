@@ -1,5 +1,5 @@
 .hero {
-  padding-block: 2.5rem 4rem;
+  padding-block: 2rem 3rem;
 }
 
 .hero-shell {
@@ -8,8 +8,8 @@
     'copy'
     'jk'
     'ctl';
-  gap: var(--space-6);
-  /* The section above carries the reference's 2.5rem/4rem; without
+  gap: var(--space-5);
+  /* The section above carries the hero's own top/bottom rhythm; without
      this the shared .section-shell clamp would stack on top of it. */
   padding-block: 0;
 }

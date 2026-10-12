@@ -1,6 +1,6 @@
 .services-grid {
   display: grid;
-  gap: var(--space-7);
+  gap: var(--space-6);
 }
 
 .services-grid .card {

@@ -1,25 +1,39 @@
 import { useEffect } from 'react';
 
 /**
- * Reveals every `.reveal` element as it scrolls into view.
+ * Plays the `.reveal` rise as each section scrolls into view.
  *
- * Three safety nets, so content can never be withheld:
- * - elements at or above the fold are revealed synchronously on mount;
- * - a passive scroll check reveals anything that has entered the viewport;
- * - IntersectionObserver does the same, and unobserves as it goes.
+ * Sections are visible at rest; this hook only adds `.is-visible`, and only
+ * to sections that start below the fold. Content can therefore never be
+ * withheld: if the observer never fires — no JS, print, or a capture taken
+ * without scrolling — the sections simply stay visible.
  *
- * If the visitor prefers reduced motion, everything is shown immediately.
+ * Three ways a section can start playing, in order of how early they fire:
+ * - IntersectionObserver, set to fire while the section is still clear of
+ *   the viewport, so the rise begins off-screen rather than on screen;
+ * - a passive scroll check, for when observer callbacks are throttled;
+ * - nothing at all, if both fail — the section just remains visible.
+ *
+ * If the visitor prefers reduced motion, nothing is marked and the rise is
+ * never played.
  */
 export default function useReveal() {
   useEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (reduceMotion) {
-      document.querySelectorAll('.reveal').forEach((node) => node.classList.add('is-visible'));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return undefined;
     }
 
-    const pending = Array.from(document.querySelectorAll('.reveal'));
+    const all = Array.from(document.querySelectorAll('.reveal'));
+
+    if (all.length === 0) {
+      return undefined;
+    }
+
+    // Only what is off-screen at first paint gets to animate. Anything
+    // already on screen is left alone so the first frame is never blank.
+    const pending = all.filter(
+      (node) => node.getBoundingClientRect().top >= window.innerHeight,
+    );
 
     if (pending.length === 0) {
       return undefined;
@@ -31,22 +45,24 @@ export default function useReveal() {
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              reveal(entry.target);
-              observer.unobserve(entry.target);
+              play(entry.target);
             }
           });
         },
-        { rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
+        // A positive bottom margin makes this fire while the section is
+        // still a quarter of a viewport below the fold.
+        { rootMargin: '0px 0px 25% 0px', threshold: 0 },
       );
 
-    function reveal(node) {
-      if (node.classList.contains('is-visible')) {
+    function play(node) {
+      const index = pending.indexOf(node);
+      if (index === -1) {
         return;
       }
+      pending.splice(index, 1);
       node.classList.add('is-visible');
-      const index = pending.indexOf(node);
-      if (index !== -1) {
-        pending.splice(index, 1);
+      if (observer) {
+        observer.unobserve(node);
       }
       if (pending.length === 0) {
         window.removeEventListener('scroll', check);
@@ -56,29 +72,21 @@ export default function useReveal() {
       }
     }
 
-    // Fallback that works even if observer callbacks are throttled.
+    // Fallback that works even if observer callbacks are throttled. Fires
+    // while the section is still off-screen, like the observer does.
     function check() {
       pending.slice().forEach((node) => {
-        if (node.getBoundingClientRect().top < window.innerHeight) {
-          reveal(node);
-          if (observer) {
-            observer.unobserve(node);
-          }
+        if (node.getBoundingClientRect().top < window.innerHeight * 1.25) {
+          play(node);
         }
       });
     }
 
     window.addEventListener('scroll', check, { passive: true });
 
-    pending.slice().forEach((node) => {
-      if (node.getBoundingClientRect().top < window.innerHeight) {
-        reveal(node);
-        return;
-      }
-      if (observer) {
-        observer.observe(node);
-      }
-    });
+    if (observer) {
+      pending.forEach((node) => observer.observe(node));
+    }
 
     return () => {
       window.removeEventListener('scroll', check);

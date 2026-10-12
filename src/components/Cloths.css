@@ -7,13 +7,13 @@
 .cloths {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem var(--space-4);
-  margin-top: var(--space-6);
+  gap: var(--space-5) var(--space-4);
+  margin-top: var(--space-5);
 }
 
 .cl .blk {
-  aspect-ratio: 3 / 4;
-  margin-bottom: 0.7rem;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 0.6rem;
   background-color: var(--c);
   background-image:
     repeating-linear-gradient(90deg, transparent 0 6px, var(--cloth-stripe) 6px 7px),

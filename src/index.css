@@ -54,7 +54,7 @@ img {
 .section-shell {
   width: min(100% - 2 * var(--gutter), var(--container-page));
   margin-inline: auto;
-  padding-block: clamp(4rem, 9vw, 8rem);
+  padding-block: clamp(3rem, 6vw, 5rem);
 }
 
 .section-title {
@@ -176,19 +176,13 @@ img {
   }
 }
 
-/* Scroll reveal: hidden only when this class is present, so content is
-   never lost if the observer does not run. */
-.reveal {
-  opacity: 0;
-  transform: translateY(1.25rem);
-  transition:
-    opacity var(--dur-slow) var(--ease),
-    transform var(--dur-slow) var(--ease);
-}
-
+/* Scroll reveal. `.reveal` is only a hook: sections are fully visible at
+   rest, and JS adds `.is-visible` to the ones that start below the fold so
+   they rise in. Content is therefore never withheld — if the observer does
+   not run (no JS, print, a capture taken without scrolling) the sections
+   simply stay visible. */
 .reveal.is-visible {
-  opacity: 1;
-  transform: none;
+  animation: rise var(--dur-slow) var(--ease) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -203,7 +197,6 @@ img {
 
   /* Reveal must never hold content back when motion is reduced. */
   .reveal {
-    opacity: 1 !important;
-    transform: none !important;
+    animation: none !important;
   }
 }
