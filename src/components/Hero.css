@@ -1,17 +1,25 @@
 .hero {
-  background: var(--color-surface);
+  padding-block: 2.5rem 4rem;
 }
 
 .hero-shell {
   display: grid;
+  grid-template-areas:
+    'copy'
+    'jk'
+    'ctl';
   gap: var(--space-6);
-  align-items: center;
+}
+
+.hero-copy {
+  grid-area: copy;
+  animation: rise var(--dur-enter) var(--ease) both;
 }
 
 .hero-copy::before {
-  content: "";
+  content: '';
   display: block;
-  width: 3rem;
+  width: 48px;
   height: 3px;
   background: var(--color-primary);
   margin-bottom: var(--space-5);
@@ -25,17 +33,31 @@
   letter-spacing: var(--tracking-heading);
 }
 
-.hero-copy {
-  animation: rise var(--dur-enter) var(--ease) both;
+.jacket-wrap {
+  grid-area: jk;
+  background-color: var(--color-surface);
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 15px,
+    var(--color-border) 15px 16px
+  );
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  animation: rise var(--dur-enter) var(--ease) var(--delay-enter) both;
 }
 
-.jacket-wrap {
-  animation: rise var(--dur-enter) var(--ease) var(--delay-enter) both;
-  justify-self: center;
+.jacket-svg {
+  width: min(78%, 420px);
+  height: auto;
+}
+
+.hero-controls {
+  grid-area: ctl;
 }
 
 /* Repaint the jacket smoothly whenever a choice changes. */
-.jacket-svg [data-part] {
+.jacket-svg [id^='sv'] {
   transition: fill var(--dur-slow) var(--ease);
 }
 
@@ -43,13 +65,18 @@
   animation: pop var(--dur-pop) var(--ease);
 }
 
-.jacket-svg {
-  width: min(100%, 24rem);
-  filter: drop-shadow(var(--shadow-soft));
-}
-
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
   .hero-shell {
-    grid-template-columns: 1.05fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'copy jk'
+      'ctl jk';
+    align-items: start;
+    gap: var(--space-4) var(--gutter);
+  }
+
+  .jacket-wrap {
+    aspect-ratio: auto;
+    min-height: 600px;
   }
 }

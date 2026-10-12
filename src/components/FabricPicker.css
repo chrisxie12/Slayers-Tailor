@@ -1,140 +1,104 @@
-.picker {
-  display: grid;
-  gap: var(--space-4);
+/* The reference's .ctl: swatch groups, pattern chips, live summary and
+   the two actions. Sits in the hero's `ctl` grid area. */
+.ctl {
+  display: block;
 }
 
-.picker-group {
-  margin: 0;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
+/* fieldset resets, so the group looks like the reference's plain div. */
+.grp {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
 }
 
-.picker-group legend {
-  padding: 0 var(--space-2);
-  font-weight: 700;
+.grp legend {
+  display: block;
+  float: left;
+  width: 100%;
+  margin-bottom: var(--space-2);
+  font-size: var(--btn-font-size);
+  font-weight: 600;
 }
 
-.picker-group legend span {
+/* Selected name rides along in the group label, as in the reference. */
+.grp legend span {
   font-weight: 400;
   color: var(--color-muted);
 }
 
-.picker-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: var(--space-3);
-}
-
-.swatch,
-.pattern-btn,
-.picker-link {
-  min-height: 3rem;
-  border-radius: var(--radius-sm);
-}
-
-.swatch {
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  padding: var(--space-2);
-  display: grid;
-  gap: var(--space-2);
-  text-align: left;
-}
-
-.swatch::before {
-  content: '';
-  width: 100%;
-  height: 2rem;
-  border-radius: var(--radius-sm);
-  background: var(--swatch-color);
-  transition: transform var(--dur-base) var(--ease);
-}
-
-.swatch,
-.pattern-btn {
-  transition:
-    border-color var(--dur-base) var(--ease),
-    box-shadow var(--dur-base) var(--ease),
-    background-color var(--dur-base) var(--ease),
-    color var(--dur-base) var(--ease),
-    transform var(--dur-fast) var(--ease);
-}
-
-.is-active {
-  border-color: var(--color-primary);
-  box-shadow: inset 0 0 0 1px var(--color-primary);
-}
-
-.swatch:active,
-.pattern-btn:active {
-  transform: scale(0.98);
-}
-
-@media (hover: hover) {
-  .swatch:hover,
-  .pattern-btn:hover {
-    border-color: var(--color-ink);
-  }
-
-  .swatch:hover::before {
-    transform: scale(1.03);
-  }
-}
-
-.pattern-row {
+.sws {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.pattern-btn {
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  padding: 0 var(--space-4);
-}
-
-.summary {
-  margin: 0;
-  font-weight: 600;
-}
-
-.picker-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  padding: 0 var(--space-4);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  text-decoration: none;
-}
-
-.picker-acts {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   gap: var(--space-3);
+  flex-wrap: wrap;
+  clear: both;
 }
 
-.picker-secondary {
-  min-height: var(--btn-min-height);
-  display: inline-flex;
-  align-items: center;
-  padding: 0 var(--btn-padding-x);
-  border: 1px solid currentColor;
+/* Colour disc. Reference is 44px; 48px here to meet the 48px tap
+   target rule. */
+.sw {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--c);
+  cursor: pointer;
+}
+
+.sw[aria-pressed='true'] {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.sm {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-small);
+  color: var(--color-muted);
+}
+
+.chips {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  clear: both;
+}
+
+/* Text chip for the pattern. Reference is 44px; 48px here to meet the
+   48px tap target rule. */
+.chip {
+  min-height: 48px;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  background: none;
+  color: inherit;
+  font-family: var(--font-body);
+  font-size: var(--btn-font-size);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--color-ink);
+  color: var(--color-bg);
+  border-color: var(--color-ink);
+}
+
+#sum {
+  margin: var(--space-4) 0 0;
   color: var(--color-ink);
-  text-decoration: none;
+  font-weight: 500;
 }
 
-@media (hover: hover) {
-  .picker-link:hover {
-    background: var(--color-primary-deep);
-    color: var(--color-on-primary);
-  }
+.acts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: 1.5rem;
+}
 
-  .picker-secondary:hover {
-    background: var(--color-ink);
-    color: var(--color-bg);
+@media (min-width: 48rem) {
+  .acts {
+    flex-direction: row;
   }
 }

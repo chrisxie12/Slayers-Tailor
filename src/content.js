@@ -179,8 +179,9 @@ export const FOOTER = {
   credit: 'Creative direction by Vision61 Studios.',
 };
 
+// The reference always names the pattern, even plain, lowercased.
 export function whatsAppMessage({ fabric, pattern, lining, buttons }) {
-  return `Hi Slayers Tailor, I'd like a fitting. Fabric: ${fabric}${pattern ? ` (${pattern})` : ''}, lining: ${lining}, buttons: ${buttons}.`;
+  return `Hi Slayers Tailor, I'd like a fitting. Fabric: ${fabric} (${pattern.toLowerCase()}), lining: ${lining}, buttons: ${buttons}.`;
 }
 
 export function whatsAppCategoryMessage(category) {

@@ -54,16 +54,17 @@ export default function App() {
           lining={selected.lining}
           buttons={selected.buttons}
           pattern={selected.pattern}
-        />
-        <FabricPicker
-          fabrics={FABRICS}
-          linings={LININGS}
-          buttons={BUTTONS}
-          patterns={PATTERNS}
-          selected={selected}
-          setSelected={setSelected}
-          whatsappHref={whatsappHref}
-        />
+        >
+          <FabricPicker
+            fabrics={FABRICS}
+            linings={LININGS}
+            buttons={BUTTONS}
+            patterns={PATTERNS}
+            selected={selected}
+            setSelected={setSelected}
+            whatsappHref={whatsappHref}
+          />
+        </Hero>
         <Services />
         {isSectionVisible('look') && <Lookbook />}
         <Process />

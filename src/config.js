@@ -38,26 +38,32 @@ export const CONTACT = hideEmpty([
 // object hides the line entirely.
 export const FABRIC_NOTES = {};
 
+// Picker options. Colours resolve through design-system.css tokens.
 export const FABRICS = [
-  { id: 'midnight-wool', name: 'Midnight Wool', shell: 'var(--fabric-midnight)', accent: 'var(--fabric-midnight-accent)' },
-  { id: 'charcoal-twill', name: 'Charcoal Twill', shell: 'var(--fabric-charcoal)', accent: 'var(--fabric-charcoal-accent)' },
-  { id: 'navy-serge', name: 'Navy Serge', shell: 'var(--fabric-navy)', accent: 'var(--fabric-navy-accent)' },
+  { id: 'midnight-navy', name: 'Midnight navy', color: 'var(--fabric-midnight)' },
+  { id: 'charcoal', name: 'Charcoal', color: 'var(--fabric-charcoal)' },
+  { id: 'forest-green', name: 'Forest green', color: 'var(--fabric-forest)' },
+  { id: 'burgundy', name: 'Burgundy', color: 'var(--fabric-burgundy)' },
+  { id: 'sand', name: 'Sand', color: 'var(--fabric-sand)' },
 ];
 
 export const LININGS = [
-  { id: 'burgundy', name: 'Burgundy', color: 'var(--lining-burgundy)' },
-  { id: 'forest', name: 'Forest', color: 'var(--lining-forest)' },
-  { id: 'sapphire', name: 'Sapphire', color: 'var(--lining-sapphire)' },
+  { id: 'crimson', name: 'Crimson', color: 'var(--lining-crimson)' },
+  { id: 'gold', name: 'Gold', color: 'var(--lining-gold)' },
+  { id: 'emerald', name: 'Emerald', color: 'var(--lining-emerald)' },
+  { id: 'violet', name: 'Violet', color: 'var(--lining-violet)' },
+  { id: 'ivory', name: 'Ivory', color: 'var(--lining-ivory)' },
 ];
 
 export const BUTTONS = [
   { id: 'horn', name: 'Horn', color: 'var(--button-horn)' },
-  { id: 'onyx', name: 'Onyx', color: 'var(--button-onyx)' },
+  { id: 'brass', name: 'Brass', color: 'var(--button-brass)' },
   { id: 'pearl', name: 'Pearl', color: 'var(--button-pearl)' },
 ];
 
+// `pattern` is the SVG pattern id suffix; empty means a plain weave.
 export const PATTERNS = [
-  { id: 'plain', name: 'Plain' },
-  { id: 'pinstripe', name: 'Pinstripe' },
-  { id: 'check', name: 'Check' },
+  { id: 'plain', name: 'Plain', pattern: '' },
+  { id: 'pinstripe', name: 'Pinstripe', pattern: 'pin' },
+  { id: 'check', name: 'Check', pattern: 'chk' },
 ];

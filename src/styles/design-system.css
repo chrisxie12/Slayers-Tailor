@@ -14,20 +14,27 @@
   --color-accent: #d9ae52;
   --color-overlay: rgb(18 18 18 / 74%);
 
+  /* Cloth, lining and button swatches. Values are the reference's own. */
   --fabric-midnight: #1c2a44;
-  --fabric-midnight-accent: #44557a;
   --fabric-charcoal: #3a3a3d;
-  --fabric-charcoal-accent: #6a6a6e;
-  --fabric-navy: #26374f;
-  --fabric-navy-accent: #5b7091;
+  --fabric-forest: #1f3d2e;
+  --fabric-burgundy: #5a1626;
+  --fabric-sand: #c9b79c;
 
-  --lining-burgundy: #5a1626;
-  --lining-forest: #1f3d2e;
-  --lining-sapphire: #1d4f8f;
+  --lining-crimson: #d4142f;
+  --lining-gold: #e0a83c;
+  --lining-emerald: #00a870;
+  --lining-violet: #6b3fa0;
+  --lining-ivory: #f3ede0;
 
   --button-horn: #2b2118;
-  --button-onyx: #1a1a1c;
+  --button-brass: #b08d57;
   --button-pearl: #e8e4da;
+
+  /* Jacket drawing: outline, cast shadow and basted-stitch highlight. */
+  --jacket-outline: rgb(0 0 0 / 30%);
+  --jacket-shadow: #000000;
+  --jacket-highlight: #ffffff;
 
   /* Type scale */
   --text-h1: clamp(2.8rem, 11vw, 6rem);
@@ -51,6 +58,9 @@
   --space-5: 1.5rem;
   --space-6: 2rem;
   --space-7: 3rem;
+
+  /* Page gutter, from the reference's --gut. */
+  --gutter: clamp(1.25rem, 5vw, 5rem);
 
   --radius-sm: 0.375rem;
   --radius-md: 0.75rem;
